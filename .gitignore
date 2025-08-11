@@ -2,3 +2,7 @@
 *.built
 *.BAK
 *~
+
+.env
+.env.local
+.env.*.local
