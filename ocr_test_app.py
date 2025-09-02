@@ -56,7 +56,7 @@ st.markdown("""
 def setup_tesseract():
     """Setup Tesseract with the trained model"""
     # Check if the trained model exists
-    model_path = "data/alg.traineddata"
+    model_path = "/Users/pyaelinn/tessFinetune/tesstrain/data/algV4.traineddata"
     if not os.path.exists(model_path):
         st.error(f"❌ Trained model not found at {model_path}")
         st.info("Please make sure you have completed the training process first.")
@@ -67,39 +67,45 @@ def setup_tesseract():
     os.environ['TESSDATA_PREFIX'] = data_dir
     
     # Configure pytesseract to use the trained model
-    custom_config = r'--oem 1 --psm 6 -l alg'
+    custom_config = r'--oem 1 --psm 6 -l algV4'
     
     return custom_config
 
-def preprocess_image(image):
-    """Preprocess image for better OCR results"""
-    # Convert PIL to OpenCV format
+def remove_background_canvas_style(image):
+    """Remove background and return a clean grayscale image on white background for better OCR.
+
+    Accepts either PIL.Image or OpenCV BGR/gray numpy array and returns a uint8 grayscale numpy array.
+    """
+    # Normalize input to OpenCV BGR/gray numpy array
     if isinstance(image, Image.Image):
-        image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
-    
-    # Convert to grayscale
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    
-    # Apply different preprocessing techniques
-    processed_images = {}
-    
-    # Original grayscale
-    processed_images['Original'] = gray
-    
-    # Binary threshold
-    _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-    processed_images['Binary'] = binary
-    
-    # Adaptive threshold
-    adaptive = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)
-    processed_images['Adaptive'] = adaptive
-    
-    # Gaussian blur + threshold
+        img = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+    else:
+        img = image
+
+    # Convert to grayscale if needed
+    if len(img.shape) == 3:
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    else:
+        gray = img.copy()
+
+    # Slight blur for robustness
     blurred = cv2.GaussianBlur(gray, (5, 5), 0)
-    _, blurred_binary = cv2.threshold(blurred, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-    processed_images['Blurred'] = blurred_binary
-    
-    return processed_images
+
+    # Otsu threshold to separate foreground/background
+    _, thresh = cv2.threshold(blurred, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+
+    # Invert so text/foreground = white, background = black
+    mask = cv2.bitwise_not(thresh)
+
+    # Clean mask
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
+    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
+    mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+
+    # Compose on white background in grayscale
+    white_bg = np.full_like(gray, 255, dtype=np.uint8)
+    result = np.where(mask == 255, gray, white_bg).astype(np.uint8)
+    return result
 
 def perform_ocr(image, config):
     """Perform OCR on the image"""
@@ -157,13 +163,9 @@ def main():
     # Sidebar
     st.sidebar.markdown("## ⚙️ Settings")
     
-    # Preprocessing options
+    # Preprocessing info
     st.sidebar.markdown("### Image Preprocessing")
-    preprocessing_method = st.sidebar.selectbox(
-        "Choose preprocessing method:",
-        ["Original", "Binary", "Adaptive", "Blurred"],
-        help="Different preprocessing methods can improve OCR accuracy"
-    )
+    st.sidebar.info("Background removal is applied automatically before OCR.")
     
     # OCR settings
     st.sidebar.markdown("### OCR Settings")
@@ -192,20 +194,18 @@ def main():
         image = Image.open(uploaded_file)
         st.image(image, caption="Original Image", use_column_width=True)
         
-        # Preprocess image
-        processed_images = preprocess_image(image)
+        # Preprocess image (background removal)
+        preprocessed_image = remove_background_canvas_style(image)
         
         # Display preprocessed image
-        st.markdown(f'<h3 class="sub-header">🔧 Preprocessed Image ({preprocessing_method})</h3>', unsafe_allow_html=True)
-        
-        selected_image = processed_images[preprocessing_method]
-        st.image(selected_image, caption=f"Preprocessed: {preprocessing_method}", use_column_width=True)
+        st.markdown('<h3 class="sub-header">🔧 Preprocessed Image (Background Removed)</h3>', unsafe_allow_html=True)
+        st.image(preprocessed_image, caption="Preprocessed: Background Removed", use_column_width=True)
         
         # Perform OCR
         st.markdown('<h3 class="sub-header">📝 OCR Results</h3>', unsafe_allow_html=True)
         
         with st.spinner("Performing OCR..."):
-            text, boxes, data = perform_ocr(selected_image, config)
+            text, boxes, data = perform_ocr(preprocessed_image, config)
         
         if text:
             # Display results in columns
@@ -243,7 +243,7 @@ def main():
             st.markdown('<h3 class="sub-header">🎯 Character Detection</h3>', unsafe_allow_html=True)
             
             if boxes:
-                annotated_image = draw_boxes(selected_image, boxes)
+                annotated_image = draw_boxes(preprocessed_image, boxes)
                 st.image(annotated_image, caption="Image with character bounding boxes", use_column_width=True)
             
             # Download results
@@ -278,18 +278,14 @@ def main():
                     os.unlink(img_buffer.name)
         
         else:
-            st.warning("⚠️ No text was detected in the image. Try adjusting the preprocessing method or upload a different image.")
+            st.warning("⚠️ No text was detected in the image. Try a clearer image, crop to the text region, or adjust confidence threshold.")
     
     # Instructions
     with st.expander("ℹ️ How to use this app"):
         st.markdown("""
         ### Instructions:
         1. **Upload an image** containing Myanmar text
-        2. **Choose preprocessing method** - Different methods work better for different image types:
-           - **Original**: No preprocessing
-           - **Binary**: Good for high contrast images
-           - **Adaptive**: Good for varying lighting conditions
-           - **Blurred**: Good for noisy images
+        2. **Preprocessing** is applied automatically: background is removed and text is composed on a clean white background for better OCR.
         3. **Adjust confidence threshold** if needed
         4. **View results** - The app will show:
            - Extracted text
@@ -299,8 +295,8 @@ def main():
         
         ### Tips for better results:
         - Use clear, high-resolution images
-        - Ensure good contrast between text and background
-        - Try different preprocessing methods
+        - Ensure reasonable contrast between text and background
+        - If results are poor, try cropping to the text area before upload
         - The model was trained on Myanmar text, so it works best with Myanmar characters
         """)
     
