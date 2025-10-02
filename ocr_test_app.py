@@ -56,7 +56,7 @@ st.markdown("""
 def setup_tesseract():
     """Setup Tesseract with the trained model"""
     # Check if the trained model exists
-    model_path = "/Users/pyaelinn/tessFinetune/tesstrain/data/algV4.traineddata"
+    model_path = "/Users/pyaelinn/tessFinetune/tesstrain/data/id_bdV2.traineddata"
     if not os.path.exists(model_path):
         st.error(f"❌ Trained model not found at {model_path}")
         st.info("Please make sure you have completed the training process first.")
@@ -67,7 +67,7 @@ def setup_tesseract():
     os.environ['TESSDATA_PREFIX'] = data_dir
     
     # Configure pytesseract to use the trained model
-    custom_config = r'--oem 1 --psm 6 -l algV4'
+    custom_config = r'--oem 1 --psm 6 -l id_bdV2'
     
     return custom_config
 

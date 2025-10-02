@@ -7,4 +7,4 @@
 .env.local
 .env.*.local
 
-models/
+data/
