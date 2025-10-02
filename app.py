@@ -58,7 +58,7 @@ st.markdown("""
 def setup_tesseract():
     """Setup Tesseract with the trained model"""
     # Check if the trained model exists
-    model_path = "data/alg.traineddata"
+    model_path = "/Users/pyaelinn/tessFinetune/tesstrain/data/id_bdV2.traineddata"
     if not os.path.exists(model_path):
         st.error(f"❌ Trained model not found at {model_path}")
         st.info("Please make sure you have completed the training process first.")
@@ -69,9 +69,45 @@ def setup_tesseract():
     os.environ['TESSDATA_PREFIX'] = data_dir
     
     # Configure pytesseract to use the trained model
-    custom_config = r'--oem 1 --psm 6 -l alg'
+    custom_config = r'--oem 1 --psm 6 -l id_bdV2'
     
     return custom_config
+
+def remove_background_canvas_style(image):
+    """Remove background and return a clean grayscale image on white background for better OCR.
+
+    Accepts either PIL.Image or OpenCV BGR/gray numpy array and returns a uint8 grayscale numpy array.
+    """
+    # Normalize input to OpenCV BGR/gray numpy array
+    if isinstance(image, Image.Image):
+        img = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+    else:
+        img = image
+
+    # Convert to grayscale if needed
+    if len(img.shape) == 3:
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    else:
+        gray = img.copy()
+
+    # Slight blur for robustness
+    blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+
+    # Otsu threshold to separate foreground/background
+    _, thresh = cv2.threshold(blurred, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+
+    # Invert so text/foreground = white, background = black
+    mask = cv2.bitwise_not(thresh)
+
+    # Clean mask
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
+    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
+    mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+
+    # Compose on white background in grayscale
+    white_bg = np.full_like(gray, 255, dtype=np.uint8)
+    result = np.where(mask == 255, gray, white_bg).astype(np.uint8)
+    return result
 
 def preprocess_image(image):
     """Preprocess image for better OCR results"""
@@ -169,9 +205,9 @@ def detect_boxes_and_ocr(image_cv, preprocess_image, config):
             confidence = float(box.conf[0])
             class_name = class_labels.get(cls, "Unknown")
             roi = image_cv[y1:y2, x1:x2]
-            # Convert ROI to grayscale
-            roi_gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
-            # OCR on grayscale crop
+            # Remove background and convert ROI to clean grayscale
+            roi_gray = remove_background_canvas_style(roi)
+            # OCR on cleaned grayscale crop
             text, _, _ = perform_ocr(roi_gray, config)
             detected.append({
                 'class': class_name,
