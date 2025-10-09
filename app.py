@@ -56,22 +56,38 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 def setup_tesseract():
-    """Setup Tesseract with the trained model"""
-    # Check if the trained model exists
-    model_path = "/Users/pyaelinn/tessFinetune/tesstrain/data/id_bdV2.traineddata"
-    if not os.path.exists(model_path):
-        st.error(f"❌ Trained model not found at {model_path}")
-        st.info("Please make sure you have completed the training process first.")
+    """Setup Tesseract with both trained models and return their configs.
+
+    Returns a dict with keys 'iddob' and 'name' containing their respective
+    pytesseract config strings, or False if any model is missing.
+    """
+    # Absolute paths for presence checks
+    iddob_model_path = "/Users/pyaelinn/tessFinetune/tesstrain/data/id_bdV2.traineddata"
+    name_model_path = "/Users/pyaelinn/tessFinetune/tesstrain/data/nameV2.traineddata"
+
+    missing = []
+    if not os.path.exists(iddob_model_path):
+        missing.append(iddob_model_path)
+    if not os.path.exists(name_model_path):
+        missing.append(name_model_path)
+    if missing:
+        st.error("❌ Trained model(s) not found:")
+        for p in missing:
+            st.write(f"- {p}")
+        st.info("Please make sure you have completed the training process and placed the files correctly.")
         return False
-    
+
     # Set the TESSDATA_PREFIX environment variable to the data directory
     data_dir = os.path.join(os.getcwd(), "data")
     os.environ['TESSDATA_PREFIX'] = data_dir
-    
-    # Configure pytesseract to use the trained model
-    custom_config = r'--oem 1 --psm 6 -l id_bdV2'
-    
-    return custom_config
+
+    # Configure pytesseract to use the trained models
+    configs = {
+        'iddob': r'--oem 1 --psm 6 -l id_bdV2',
+        'name': r'--oem 1 --psm 6 -l nameV2',
+    }
+
+    return configs
 
 def remove_background_canvas_style(image):
     """Remove background and return a clean grayscale image on white background for better OCR.
@@ -190,7 +206,7 @@ class_labels = {
     3: 'name'
 }
 
-def detect_boxes_and_ocr(image_cv, preprocess_image, config):
+def detect_boxes_and_ocr(image_cv, preprocess_image, configs):
     model_path = "v5.pt"
     if not os.path.exists(model_path):
         return []
@@ -207,8 +223,17 @@ def detect_boxes_and_ocr(image_cv, preprocess_image, config):
             roi = image_cv[y1:y2, x1:x2]
             # Remove background and convert ROI to clean grayscale
             roi_gray = remove_background_canvas_style(roi)
+            # Choose OCR model per class
+            if class_name in ("id", "dob"):
+                ocr_config = configs.get('iddob')
+            elif class_name in ("name", "father"):
+                ocr_config = configs.get('name')
+            else:
+                # default to id/dob model if class unknown
+                ocr_config = configs.get('iddob')
+
             # OCR on cleaned grayscale crop
-            text, _, _ = perform_ocr(roi_gray, config)
+            text, _, _ = perform_ocr(roi_gray, ocr_config)
             detected.append({
                 'class': class_name,
                 'confidence': confidence,
@@ -223,9 +248,9 @@ def main():
     st.markdown('<h1 class="main-header">🔍 Myanmar OCR Tester</h1>', unsafe_allow_html=True)
     st.markdown('<p style="text-align: center; font-size: 1.2rem; color: #666;">Test your fine-tuned Myanmar OCR model</p>', unsafe_allow_html=True)
     
-    # Setup Tesseract
-    config = setup_tesseract()
-    if not config:
+    # Setup Tesseract (both models)
+    configs = setup_tesseract()
+    if not configs:
         return
     
     # File upload
@@ -242,7 +267,7 @@ def main():
         if os.path.exists("v5.pt"):
             st.markdown('<h3 class="sub-header">🟩 NRC Field Detection (YOLOv5)</h3>', unsafe_allow_html=True)
             with st.spinner("Detecting NRC fields with YOLOv5..."):
-                detections = detect_boxes_and_ocr(image_cv, preprocess_image, config)
+                detections = detect_boxes_and_ocr(image_cv, preprocess_image, configs)
             if detections:
                 image_disp = image_cv.copy()
                 for det in detections:
