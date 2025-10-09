@@ -1,0 +1,972 @@
+[
+    {
+      "id": "1",
+      "state_region_name_my": "ကချင်ပြည်နယ်",
+      "state_region_name_en": "Kachin State",
+      "districts": [
+        {
+          "district_name_my": "မြစ်ကြီးနား",
+          "district_name_en": "Myitkyina",
+          "townships": [
+            { "township_name_my": "မြစ်ကြီးနား", "township_name_en": "Myitkyina", "code": { "my": "မကန", "en": "1/ma ka na" } },
+            { "township_name_my": "ဆင်ဘို(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Sinbo (Former Sub-township)", "code": { "my": "ဆဘတ", "en": "1/hsa ba ta" } },
+            { "township_name_my": "ဝိုင်းမော်", "township_name_en": "Waingmaw", "code": { "my": "ဝမန", "en": "1/wa ma na" } },
+            { "township_name_my": "ဆဒုံး(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Sadung (Former Sub-township)", "code": { "my": "ဆဒန", "en": "1/hsa da na" } },
+            { "township_name_my": "အင်ဂျန်းယန်", "township_name_en": "Injangyang", "code": { "my": "အဂယ", "en": "1/a ga ya" } },
+            { "township_name_my": "တနိုင်း", "township_name_en": "Tanai", "code": { "my": "တနန", "en": "1/ta na na" } },
+            { "township_name_my": "ရှင်ဗွေယန်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Shinbwayyang (Former Sub-township)", "code": { "my": "ရဗယ", "en": "1/ra ba ya" } },
+            { "township_name_my": "ချီဖွေ(လောခေါင်)", "township_name_en": "Chipwi (Lawkhaung)", "code": { "my": "ခဖန", "en": "1/kha hpa na" } },
+            { "township_name_my": "ဆော့လော်", "township_name_en": "Hsawlaw", "code": { "my": "ဆလန", "en": "1/hsa la na" } },
+            { "township_name_my": "ကန်ပိုက်တီး(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Kanpaikti (Former Sub-township)", "code": { "my": "ကပတ", "en": "1/ka pa ta" } },
+            { "township_name_my": "ပန်ဝါ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Panwa (Former Sub-township)", "code": { "my": "ပဝန", "en": "1/pa wa na" } }
+          ]
+        },
+        {
+          "district_name_my": "မိုးညှင်း",
+          "district_name_en": "Mohnyin",
+          "townships": [
+            { "township_name_my": "မိုးညှင်း", "township_name_en": "Mohnyin", "code": { "my": "မညန", "en": "1/ma nja na" } },
+            { "township_name_my": "ဟိုပင်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Hopin (Former Sub-township)", "code": { "my": "ဟပန", "en": "1/ha pa na" } },
+            { "township_name_my": "မိုးကောင်း", "township_name_en": "Mogaung", "code": { "my": "မကတ", "en": "1/ma ka ta" } },
+            { "township_name_my": "ဖားကန့်", "township_name_en": "Hpakant", "code": { "my": "ဖကန", "en": "1/pha ka na" } },
+            { "township_name_my": "ကာမိုင်း(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Kamaing (Former Sub-township)", "code": { "my": "ကမတ", "en": "1/ka ma ta" } }
+          ]
+        },
+        {
+          "district_name_my": "ဗန်းမော်",
+          "district_name_en": "Bhamo",
+          "townships": [
+            { "township_name_my": "ဗန်းမော်", "township_name_en": "Bhamo", "code": { "my": "ဗမန", "en": "1/ba ma na" } },
+            { "township_name_my": "ရွှေကူ", "township_name_en": "Shwegu", "code": { "my": "ရကန", "en": "1/ra ka na" } },
+            { "township_name_my": "မြို့လှ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Myohla (Former Sub-township)", "code": { "my": "မလန", "en": "1/ma la na" } },
+            { "township_name_my": "မိုးမောက်(စိန်လုံ)", "township_name_en": "Momauk (Sinlum)", "code": { "my": "မမန", "en": "1/ma ma na" } },
+            { "township_name_my": "လွယ်ဂျယ်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Lweje (Former Sub-township)", "code": { "my": "လဂန", "en": "1/la ga na" } },
+            { "township_name_my": "ဒေါ့ဖုန်းယန်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Dotphoneyan (Former Sub-township)", "code": { "my": "ဒဖယ", "en": "1/da hpa ya" } },
+            { "township_name_my": "မံစီ", "township_name_en": "Mansi", "code": { "my": "မစန", "en": "1/ma sa na" } }
+          ]
+        },
+        {
+          "district_name_my": "ပူတာအို",
+          "district_name_en": "Putao",
+          "townships": [
+            { "township_name_my": "ပူတာအို", "township_name_en": "Putao", "code": { "my": "ပတအ", "en": "1/pa ta a" } },
+            { "township_name_my": "မချမ်းဘော", "township_name_en": "Machanbaw", "code": { "my": "မခဘ", "en": "1/ma kha ba" } },
+            { "township_name_my": "နောင်မွန်း", "township_name_en": "Nogmung", "code": { "my": "နမန", "en": "1/na ma na" } },
+            { "township_name_my": "ပန်နန်းဒင်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Pannandin (Former Sub-township)", "code": { "my": "ပနဒ", "en": "1/pa na da" } },
+            { "township_name_my": "ခေါင်လန်ဖူး (ခေါ်ဘူဒဲ)", "township_name_en": "Nogmung (Kawnglanghpu)", "code": { "my": "ခဘဒ", "en": "1/kha ba da" } },
+            { "township_name_my": "ဆွမ်ပရာဘွမ်", "township_name_en": "Sumprabum", "code": { "my": "ဆပဘ", "en": "1/hsa pa ba" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "state_region_name_my": "ကယားပြည်နယ်",
+      "state_region_name_en": "Kayah State",
+      "districts": [
+        {
+          "district_name_my": "လွိုင်ကော်",
+          "district_name_en": "Loikaw",
+          "townships": [
+            { "township_name_my": "လွိုင်ကော်", "township_name_en": "Loikaw", "code": { "my": "လကန", "en": "2/la ka na" } },
+            { "township_name_my": "ဒီးမော့ဆို", "township_name_en": "Demoso", "code": { "my": "ဒမဆ", "en": "2/da ma hsa" } },
+            { "township_name_my": "ဖရူဆို", "township_name_en": "Hpruso", "code": { "my": "ဖရဆ", "en": "2/hpa ra hsa" } },
+            { "township_name_my": "ရှားတော", "township_name_en": "Shadaw", "code": { "my": "ရတန", "en": "2/ra ta na" } }
+          ]
+        },
+        {
+          "district_name_my": "ဘောလခဲ",
+          "district_name_en": "Bawlakhe",
+          "townships": [
+            { "township_name_my": "ဘောလခဲ", "township_name_en": "Bawlakhe", "code": { "my": "ဘလခ", "en": "2/ba la kha" } },
+            { "township_name_my": "ဖားဆောင်း", "township_name_en": "Hpasawng", "code": { "my": "ဖဆန", "en": "2/hpa hsa na" } },
+            { "township_name_my": "မယ်စဲ", "township_name_en": "Mese", "code": { "my": "မစန", "en": "2/ma sa na" } },
+            { "township_name_my": "ရွာသစ်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Ywathit (Former Sub-township)", "code": { "my": "ရသန", "en": "2/ra tha na" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "state_region_name_my": "ကရင်ပြည်နယ်",
+      "state_region_name_en": "Kayin State",
+      "districts": [
+        {
+          "district_name_my": "ဘားအံ",
+          "district_name_en": "Hpa-an",
+          "townships": [
+            { "township_name_my": "ဘားအံ", "township_name_en": "Hpa-an", "code": { "my": "ဘအန", "en": "3/ba a na" } },
+            { "township_name_my": "လှိုင်းဘွဲ့", "township_name_en": "Hlaingbwe", "code": { "my": "လဘန", "en": "3/la ba na" } },
+            { "township_name_my": "ပိုင်ကျုံ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Paingkyon (Former Sub-township)", "code": { "my": "ပကန", "en": "3/pa ka na" } },
+            { "township_name_my": "ရှမ်းရွာသစ်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Shanywathit (Former Sub-township)", "code": { "my": "ရရသ", "en": "3/ra ra tha" } },
+            { "township_name_my": "သံတောင်ကြီး", "township_name_en": "Thandaunggyi", "code": { "my": "သတက", "en": "3/tha ta ka" } },
+            { "township_name_my": "လိပ်သို(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Leiktho (Former Sub-township)", "code": { "my": "လသန", "en": "3/la tha na" } },
+            { "township_name_my": "ဘောဂလိ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Bawgali (Former Sub-township)", "code": { "my": "ဘဂလ", "en": "3/ba ga la" } }
+          ]
+        },
+        {
+          "district_name_my": "ဖာပွန်",
+          "district_name_en": "Hpapun",
+          "townships": [
+            { "township_name_my": "ဖာပွန်", "township_name_en": "Hpapun", "code": { "my": "ဖပန", "en": "3/hpa pa na" } },
+            { "township_name_my": "ကမမောင်း(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Kamamaung (Former Sub-township)", "code": { "my": "ကမမ", "en": "3/ka ma ma" } }
+          ]
+        },
+        {
+          "district_name_my": "ကော့ကရိတ်",
+          "district_name_en": "Kawkareik",
+          "townships": [
+            { "township_name_my": "ကော့ကရိတ်", "township_name_en": "Kawkareik", "code": { "my": "ကကရ", "en": "3/ka ka ra" } },
+            { "township_name_my": "ကြာအင်းဆိပ်ကြီး", "township_name_en": "Kyainseikgyi", "code": { "my": "ကဆက", "en": "3/ka hsa ka" } },
+            { "township_name_my": "ကျိုက်ဒုံ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Kyaikdon (Former Sub-township)", "code": { "my": "ကဒန", "en": "3/ka da na" } },
+            { "township_name_my": "ဘုရားသုံးဆူ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Payathonzu (Former Sub-township)", "code": { "my": "ဘသဆ", "en": "3/ba tha hsa" } }
+          ]
+        },
+        {
+          "district_name_my": "မြဝတီ",
+          "district_name_en": "Myawaddy",
+          "townships": [
+            { "township_name_my": "မြဝတီ", "township_name_en": "Myawaddy", "code": { "my": "မဝတ", "en": "3/ma wa ta" } },
+            { "township_name_my": "စုကလိ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Sukali (Former Sub-township)", "code": { "my": "စကလ", "en": "3/sa ka la" } },
+            { "township_name_my": "ဝေါလေမြိုင်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Wawlaymyaing (Former Sub-township)", "code": { "my": "ဝလမ", "en": "3/wa la ma" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "state_region_name_my": "ချင်းပြည်နယ်",
+      "state_region_name_en": "Chin State",
+      "districts": [
+        {
+          "district_name_my": "ဟားခါး",
+          "district_name_en": "Hakha",
+          "townships": [
+            { "township_name_my": "ဟားခါး", "township_name_en": "Hakha", "code": { "my": "ဟခန", "en": "4/ha kha na" } },
+            { "township_name_my": "ထန်တလန်", "township_name_en": "Htantlang", "code": { "my": "ထတလ", "en": "4/hta ta la" } }
+          ]
+        },
+        {
+          "district_name_my": "ဖလမ်း",
+          "district_name_en": "Falam",
+          "townships": [
+            { "township_name_my": "ဖလမ်း", "township_name_en": "Falam", "code": { "my": "ဖလန", "en": "4/hpa la na" } },
+            { "township_name_my": "ရိခေါ်ဒါရ်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Rikhawdar (Former Sub-township)", "code": { "my": "ရခဒ", "en": "4/ra kha da" } },
+            { "township_name_my": "တီးတိန်", "township_name_en": "Tiddim", "code": { "my": "တတန", "en": "4/ta ta na" } },
+            { "township_name_my": "တွန်းဇန်", "township_name_en": "Tonzang", "code": { "my": "တဇန", "en": "4/ta za na" } },
+            { "township_name_my": "ကျီခါး(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Cikha (Former Sub-township)", "code": { "my": "ကခန", "en": "4/ka kha na" } }
+          ]
+        },
+        {
+          "district_name_my": "မင်းတပ်",
+          "district_name_en": "Mindat",
+          "townships": [
+            { "township_name_my": "မင်းတပ်", "township_name_en": "Mindat", "code": { "my": "မတန", "en": "4/ma ta na" } },
+            { "township_name_my": "မတူပီ", "township_name_en": "Matupi", "code": { "my": "မတပ", "en": "4/ma ta pa" } },
+            { "township_name_my": "ရေဇွာ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Rezua (Former Sub-township)", "code": { "my": "ရဇန", "en": "4/ra za na" } },
+            { "township_name_my": "ကန်ပက်လက်", "township_name_en": "Kanpetlet", "code": { "my": "ကပလ", "en": "4/ka pa la" } },
+            { "township_name_my": "ပလက်ဝ", "township_name_en": "Paletwa", "code": { "my": "ပလဝ", "en": "4/pa la wa" } },
+            { "township_name_my": "ဆမီး(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Sami (Former Sub-township)", "code": { "my": "ဆမန", "en": "4/hsa ma na" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "state_region_name_my": "စစ်ကိုင်းတိုင်းဒေသကြီး",
+      "state_region_name_en": "Sagaing Region",
+      "districts": [
+        {
+          "district_name_my": "စစ်ကိုင်း",
+          "district_name_en": "Sagaing",
+          "townships": [
+            { "township_name_my": "စစ်ကိုင်း", "township_name_en": "Sagaing", "code": { "my": "စကန", "en": "5/sa ka na" } },
+            { "township_name_my": "မြင်းမူ", "township_name_en": "Myinmu", "code": { "my": "မမတ", "en": "5/ma ma ta" } },
+            { "township_name_my": "မြောင်", "township_name_en": "Myaung", "code": { "my": "မမန", "en": "5/ma ma na" } }
+          ]
+        },
+        {
+          "district_name_my": "ရွှေဘို",
+          "district_name_en": "Shwebo",
+          "townships": [
+            { "township_name_my": "ရွှေဘို", "township_name_en": "Shwebo", "code": { "my": "ရဘန", "en": "5/ra ba na" } },
+            { "township_name_my": "ဝက်လက်", "township_name_en": "Wetlet", "code": { "my": "ဝလန", "en": "5/wa la na" } },
+            { "township_name_my": "ခင်ဦး", "township_name_en": "Khin-U", "code": { "my": "ခဥန", "en": "5/kha u na" } },
+            { "township_name_my": "ကန့်ဘလူ", "township_name_en": "Kanbalu", "code": { "my": "ကဘလ", "en": "5/ka ba la" } },
+            { "township_name_my": "ကျွန်းလှ", "township_name_en": "Kyunhla", "code": { "my": "ကလန", "en": "5/ka la na" } },
+            { "township_name_my": "ရေဦး", "township_name_en": "Ye-U", "code": { "my": "ရဥန", "en": "5/ra u na" } },
+            { "township_name_my": "ဒီပဲယင်း", "township_name_en": "Tabayin", "code": { "my": "ဒပယ", "en": "5/da pa ya" } },
+            { "township_name_my": "တန့်ဆည်", "township_name_en": "Taze", "code": { "my": "တဆန", "en": "5/ta hsa na" } },
+            { "township_name_my": "ကျောက်မြောင်း(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Kyaukmyaung (Former Sub-township)", "code": { "my": "ကမန", "en": "5/ka ma na" } }
+          ]
+        },
+        {
+          "district_name_my": "မုံရွာ",
+          "district_name_en": "Monywa",
+          "townships": [
+            { "township_name_my": "မုံရွာ", "township_name_en": "Monywa", "code": { "my": "မရန", "en": "5/ma ra na" } },
+            { "township_name_my": "ချောင်းဦး", "township_name_en": "Chaung-U", "code": { "my": "ခဥတ", "en": "5/kha u ta" } },
+            { "township_name_my": "အရာတော်", "township_name_en": "Ayadaw", "code": { "my": "အရတ", "en": "5/a ra ta" } },
+            { "township_name_my": "ဘုတလင်", "township_name_en": "Budalin", "code": { "my": "ဘတလ", "en": "5/ba ta la" } }
+          ]
+        },
+        {
+          "district_name_my": "ယင်းမာပင်",
+          "district_name_en": "Yinmabin",
+          "townships": [
+            { "township_name_my": "ယင်းမာပင်", "township_name_en": "Yinmabin", "code": { "my": "ယမပ", "en": "5/ya ma pa" } },
+            { "township_name_my": "ပုလဲ", "township_name_en": "Pale", "code": { "my": "ပလန", "en": "5/pa la na" } },
+            { "township_name_my": "ကနီ", "township_name_en": "Kani", "code": { "my": "ကနန", "en": "5/ka na na" } },
+            { "township_name_my": "ဆားလင်းကြီး", "township_name_en": "Salingyi", "code": { "my": "ဆလက", "en": "5/hsa la ka" } }
+          ]
+        },
+        {
+          "district_name_my": "ကသာ",
+          "district_name_en": "Katha",
+          "townships": [
+            { "township_name_my": "ကသာ", "township_name_en": "Katha", "code": { "my": "ကသန", "en": "5/ka tha na" } },
+            { "township_name_my": "ထီးချိုင့်", "township_name_en": "Htigyaing", "code": { "my": "ထခန", "en": "5/hta kha na" } },
+            { "township_name_my": "အင်းတော်", "township_name_en": "Indaw", "code": { "my": "အတန", "en": "5/a ta na" } },
+            { "township_name_my": "ဗန်းမောက်", "township_name_en": "Banmauk", "code": { "my": "ဗမန", "en": "5/ba ma na" } }
+          ]
+        },
+        {
+          "district_name_my": "ကောလင်း",
+          "district_name_en": "Kawlin",
+          "townships": [
+            { "township_name_my": "ကောလင်း", "township_name_en": "Kawlin", "code": { "my": "ကလတ", "en": "5/ka la ta" } },
+            { "township_name_my": "ပင်လည်ဘူး", "township_name_en": "Pinlebu", "code": { "my": "ပလဘ", "en": "5/pa la ba" } },
+            { "township_name_my": "ဝန်းသို", "township_name_en": "Wuntho", "code": { "my": "ဝသန", "en": "5/wa tha na" } }
+          ]
+        },
+        {
+          "district_name_my": "ကလေး",
+          "district_name_en": "Kalay",
+          "townships": [
+            { "township_name_my": "ကလေး", "township_name_en": "Kalay", "code": { "my": "ကလထ", "en": "5/ka la hta" } },
+            { "township_name_my": "ကလေးဝ", "township_name_en": "Kalewa", "code": { "my": "ကလဝ", "en": "5/ka la wa" } },
+            { "township_name_my": "မင်းကင်း", "township_name_en": "Mingin", "code": { "my": "မကန", "en": "5/ma ka na" } }
+          ]
+        },
+        {
+          "district_name_my": "တမူး",
+          "district_name_en": "Tamu",
+          "townships": [
+            { "township_name_my": "တမူး", "township_name_en": "Tamu", "code": { "my": "တမန", "en": "5/ta ma na" } },
+            { "township_name_my": "ခမ်းပတ်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Khampat (Former Sub-township)", "code": { "my": "ခပန", "en": "5/kha pa na" } },
+            { "township_name_my": "မြို့သစ်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Myothit (Former Sub-township)", "code": { "my": "မသန", "en": "5/ma tha na" } }
+          ]
+        },
+        {
+          "district_name_my": "မော်လိုက်",
+          "district_name_en": "Mawlaik",
+          "townships": [
+            { "township_name_my": "မော်လိုက်", "township_name_en": "Mawlaik", "code": { "my": "မလန", "en": "5/ma la na" } },
+            { "township_name_my": "ဖောင်းပြင်", "township_name_en": "Paungbyin", "code": { "my": "ဖပန", "en": "5/hpa pa na" } }
+          ]
+        },
+        {
+          "district_name_my": "ခန္တီး",
+          "district_name_en": "Hkamti",
+          "townships": [
+            { "township_name_my": "ခန္တီး", "township_name_en": "Hkamti", "code": { "my": "ခတန", "en": "5/kha ta na" } },
+            { "township_name_my": "ဟုမ္မလင်း", "township_name_en": "Homalin", "code": { "my": "ဟမလ", "en": "5/ha ma la" } },
+            { "township_name_my": "လေရှီး", "township_name_en": "Leshi", "code": { "my": "လရန", "en": "5/la ra na" } },
+            { "township_name_my": "လဟယ်", "township_name_en": "Lahe", "code": { "my": "လဟန", "en": "5/la ha na" } },
+            { "township_name_my": "နန်းယွန်း", "township_name_en": "Nanyun", "code": { "my": "နယန", "en": "5/na ya na" } },
+            { "township_name_my": "ပန်ဆောင်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Pansaung (Former Sub-township)", "code": { "my": "ပဆန", "en": "5/pa hsa na" } },
+            { "township_name_my": "ဒုံဟီး(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Donhee (Former Sub-township)", "code": { "my": "ဒဟန", "en": "5/da ha na" } },
+            { "township_name_my": "မိုပိုင်းလွတ်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Mopainglut (Former Sub-township)", "code": { "my": "မပလ", "en": "5/ma pa la" } },
+            { "township_name_my": "ထန်ပါခွေ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Htanparkway (Former Sub-township)", "code": { "my": "ထပခ", "en": "5/hta pa kha" } },
+            { "township_name_my": "ဆွမ္မရာ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Sonmara (Former Sub-township)", "code": { "my": "ဆမရ", "en": "5/hsa ma ra" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "state_region_name_my": "တနင်္သာရီတိုင်းဒေသကြီး",
+      "state_region_name_en": "Tanintharyi Region",
+      "districts": [
+        {
+          "district_name_my": "ထားဝယ်",
+          "district_name_en": "Dawei",
+          "townships": [
+            { "township_name_my": "ထားဝယ်", "township_name_en": "Dawei", "code": { "my": "ထဝန", "en": "6/hta wa na" } },
+            { "township_name_my": "လောင်းလုံး", "township_name_en": "Launglon", "code": { "my": "လလန", "en": "6/la la na" } },
+            { "township_name_my": "သရက်ချောင်း", "township_name_en": "Thayetchaung", "code": { "my": "သရခ", "en": "6/tha ra kha" } },
+            { "township_name_my": "ရေဖြူ", "township_name_en": "Yebyu", "code": { "my": "ရဖန", "en": "6/ra hpa na" } },
+            { "township_name_my": "မေတ္တာ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Myitta (Former Sub-township)", "code": { "my": "မတန", "en": "6/ma ta na" } },
+            { "township_name_my": "ကလိန်အောင်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Kaleinaung (Former Sub-township)", "code": { "my": "ကလအ", "en": "6/ka la a" } }
+          ]
+        },
+        {
+          "district_name_my": "မြိတ်",
+          "district_name_en": "Myeik",
+          "townships": [
+            { "township_name_my": "မြိတ်", "township_name_en": "Myeik", "code": { "my": "မအရ", "en": "6/ma a ra" } },
+            { "township_name_my": "ကျွန်းစု", "township_name_en": "Kyunsu", "code": { "my": "ကစန", "en": "6/ka sa na" } },
+            { "township_name_my": "ပုလော", "township_name_en": "Palaw", "code": { "my": "ပလန", "en": "6/pa la na" } },
+            { "township_name_my": "တနင်္သာရီ", "township_name_en": "Tanintharyi", "code": { "my": "တသရ", "en": "6/ta tha ra" } },
+            { "township_name_my": "ပလောက်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Palauk (Former Sub-township)", "code": { "my": "ပလတ", "en": "6/pa la ta" } }
+          ]
+        },
+        {
+          "district_name_my": "ကော့သောင်း",
+          "district_name_en": "Kawthaung",
+          "townships": [
+            { "township_name_my": "ကော့သောင်း", "township_name_en": "Kawthaung", "code": { "my": "ကသန", "en": "6/ka tha na" } },
+            { "township_name_my": "ဘုတ်ပြင်း", "township_name_en": "Bokpyin", "code": { "my": "ဘပန", "en": "6/ba pa na" } },
+            { "township_name_my": "ခမောက်ကြီး(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Khamaukgyi (Former Sub-township)", "code": { "my": "ခမက", "en": "6/kha ma ka" } },
+            { "township_name_my": "ပြည်ကြီးမဏ္ဍိုင်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Pyigyimandaing (Former Sub-township)", "code": { "my": "ပကမ", "en": "6/pa ka ma" } },
+            { "township_name_my": "ကရသူရိ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Karathuri (Former Sub-township)", "code": { "my": "ကရရ", "en": "6/ka ra ra" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "state_region_name_my": "ပဲခူးတိုင်းဒေသကြီး",
+      "state_region_name_en": "Bago Region",
+      "districts": [
+        {
+          "district_name_my": "တောင်ငူ",
+          "district_name_en": "Taungoo",
+          "townships": [
+            { "township_name_my": "တောင်ငူ", "township_name_en": "Taungoo", "code": { "my": "တငန", "en": "7/ta nga na" } },
+            { "township_name_my": "ရေတာရှည်", "township_name_en": "Yedashe", "code": { "my": "ရတရ", "en": "7/ra ta ra" } },
+            { "township_name_my": "ထန်းတပင်", "township_name_en": "Tantabin", "code": { "my": "ထတပ", "en": "7/hta ta pa" } },
+            { "township_name_my": "အုတ်တွင်း", "township_name_en": "Oktwin", "code": { "my": "အတန", "en": "7/a ta na" } },
+            { "township_name_my": "ဖြူး", "township_name_en": "Pyu", "code": { "my": "ဖမန", "en": "7/hpa ma na" } },
+            { "township_name_my": "ကျောက်ကြီး", "township_name_en": "Kyaukkyi", "code": { "my": "ကကန", "en": "7/ka ka na" } }
+          ]
+        },
+        {
+          "district_name_my": "ပဲခူး",
+          "district_name_en": "Bago",
+          "townships": [
+            { "township_name_my": "ပဲခူး", "township_name_en": "Bago", "code": { "my": "ပခန", "en": "7/pa kha na" } },
+            { "township_name_my": "ကျောက်တံခါး", "township_name_en": "Kyauktaga", "code": { "my": "ကတခ", "en": "7/ka ta kha" } },
+            { "township_name_my": "ရွှေကျင်", "township_name_en": "Shwegyin", "code": { "my": "ရကန", "en": "7/ra ka na" } },
+            { "township_name_my": "ညောင်လေးပင်", "township_name_en": "Nyaunglebin", "code": { "my": "ညလပ", "en": "7/nja la pa" } },
+            { "township_name_my": "ဒိုက်ဦး", "township_name_en": "Daik-U", "code": { "my": "ဒဥန", "en": "7/da u na" } },
+            { "township_name_my": "ဝေါ", "township_name_en": "Waw", "code": { "my": "ဝမန", "en": "7/wa ma na" } },
+            { "township_name_my": "သနပ်ပင်", "township_name_en": "Thanatpin", "code": { "my": "သနပ", "en": "7/tha na pa" } },
+            { "township_name_my": "ကဝ", "township_name_en": "Kawa", "code": { "my": "ကဝန", "en": "7/ka wa na" } }
+          ]
+        },
+        {
+          "district_name_my": "သာယာဝတီ",
+          "district_name_en": "Tharrawaddy",
+          "townships": [
+            { "township_name_my": "သာယာဝတီ", "township_name_en": "Tharrawaddy", "code": { "my": "သဝတ", "en": "7/tha wa ta" } },
+            { "township_name_my": "လက်ပံတန်း", "township_name_en": "Letpadan", "code": { "my": "လပတ", "en": "7/la pa ta" } },
+            { "township_name_my": "မင်းလှ", "township_name_en": "Minhla", "code": { "my": "မလန", "en": "7/ma la na" } },
+            { "township_name_my": "မိုးညို", "township_name_en": "Monyo", "code": { "my": "မညန", "en": "7/ma nja na" } },
+            { "township_name_my": "အုတ်ဖို", "township_name_en": "Okpho", "code": { "my": "အဖန", "en": "7/a hpa na" } },
+            { "township_name_my": "ကြို့ပင်ကောက်", "township_name_en": "Gyobingauk", "code": { "my": "ကပက", "en": "7/ka pa ka" } },
+            { "township_name_my": "ဇီးကုန်း", "township_name_en": "Zigon", "code": { "my": "ဇကန", "en": "7/za ka na" } },
+            { "township_name_my": "နတ်တလင်း", "township_name_en": "Nattalin", "code": { "my": "နတလ", "en": "7/na ta la" } }
+          ]
+        },
+        {
+          "district_name_my": "ပြည်",
+          "district_name_en": "Pyay",
+          "townships": [
+            { "township_name_my": "ပြည်", "township_name_en": "Pyay", "code": { "my": "ပမန", "en": "7/pa ma na" } },
+            { "township_name_my": "သဲကုန်း", "township_name_en": "Thegon", "code": { "my": "သကန", "en": "7/tha ka na" } },
+            { "township_name_my": "ရွှေတောင်", "township_name_en": "Shwedaung", "code": { "my": "ရတန", "en": "7/ra ta na" } },
+            { "township_name_my": "ပေါင်းတည်", "township_name_en": "Paungde", "code": { "my": "ပတတ", "en": "7/pa ta ta" } },
+            { "township_name_my": "ပန်းတောင်း", "township_name_en": "Padaung", "code": { "my": "ပတန", "en": "7/pa ta na" } },
+            { "township_name_my": "ပေါက်ခေါင်း", "township_name_en": "Paukkaung", "code": { "my": "ပခတ", "en": "7/pa kha ta" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "state_region_name_my": "မကွေးတိုင်းဒေသကြီး",
+      "state_region_name_en": "Magway Region",
+      "districts": [
+        {
+          "district_name_my": "မကွေး",
+          "district_name_en": "Magway",
+          "townships": [
+            { "township_name_my": "မကွေး", "township_name_en": "Magway", "code": { "my": "မကန", "en": "8/ma ka na" } },
+            { "township_name_my": "ရေနံချောင်း", "township_name_en": "Yenangyaung", "code": { "my": "ရနခ", "en": "8/ra na kha" } },
+            { "township_name_my": "ချောက်", "township_name_en": "Chauk", "code": { "my": "ခမန", "en": "8/kha ma na" } },
+            { "township_name_my": "နတ်မောက်", "township_name_en": "Natmauk", "code": { "my": "နမန", "en": "8/na ma na" } },
+            { "township_name_my": "မြို့သစ်", "township_name_en": "Myothit", "code": { "my": "မသန", "en": "8/ma tha na" } },
+            { "township_name_my": "တောင်တွင်းကြီး", "township_name_en": "Taungdwingyi", "code": { "my": "တတက", "en": "8/ta ta ka" } }
+          ]
+        },
+        {
+          "district_name_my": "မင်းဘူး",
+          "district_name_en": "Minbu",
+          "townships": [
+            { "township_name_my": "မင်းဘူး", "township_name_en": "Minbu", "code": { "my": "မဘန", "en": "8/ma ba na" } },
+            { "township_name_my": "ပွင့်ဖြူ", "township_name_en": "Pwintbyu", "code": { "my": "ပဖန", "en": "8/pa hpa na" } },
+            { "township_name_my": "စလင်း", "township_name_en": "Salin", "code": { "my": "စလန", "en": "8/sa la na" } },
+            { "township_name_my": "စေတုတ္တရာ", "township_name_en": "Sidoktaya", "code": { "my": "စတရ", "en": "8/sa ta ra" } },
+            { "township_name_my": "ငဖဲ", "township_name_en": "Ngape", "code": { "my": "ငဖန", "en": "8/nga hpa na" } }
+          ]
+        },
+        {
+          "district_name_my": "သရက်",
+          "district_name_en": "Thayet",
+          "townships": [
+            { "township_name_my": "သရက်", "township_name_en": "Thayet", "code": { "my": "သရန", "en": "8/tha ra na" } },
+            { "township_name_my": "အောင်လံ(မြေထဲ)", "township_name_en": "Aunglan (Myayde)", "code": { "my": "အလန", "en": "8/a la na" } },
+            { "township_name_my": "ကံမ", "township_name_en": "Kamma", "code": { "my": "ကမန", "en": "8/ka ma na" } },
+            { "township_name_my": "မင်းတုန်း", "township_name_en": "Mindon", "code": { "my": "မတန", "en": "8/ma ta na" } },
+            { "township_name_my": "ဆင်ပေါင်ဝဲ", "township_name_en": "Sinbaungwe", "code": { "my": "ဆပဝ", "en": "8/hsa pa wa" } },
+            { "township_name_my": "မင်းလှ", "township_name_en": "Minhla", "code": { "my": "မလန", "en": "8/ma la na" } }
+          ]
+        },
+        {
+          "district_name_my": "ပခုက္ကူ",
+          "district_name_en": "Pakokku",
+          "townships": [
+            { "township_name_my": "ပခုက္ကူ", "township_name_en": "Pakokku", "code": { "my": "ပခက", "en": "8/pa kha ka" } },
+            { "township_name_my": "ရေစကြို", "township_name_en": "Yesagyo", "code": { "my": "ရစက", "en": "8/ra sa ka" } },
+            { "township_name_my": "မြိုင်", "township_name_en": "Myaing", "code": { "my": "မမန", "en": "8/ma ma na" } },
+            { "township_name_my": "ပေါက်", "township_name_en": "Pauk", "code": { "my": "ပမန", "en": "8/pa ma na" } },
+            { "township_name_my": "ဆိပ်ဖြူ", "township_name_en": "Seikphyu", "code": { "my": "ဆဖန", "en": "8/hsa hpa na" } }
+          ]
+        },
+        {
+          "district_name_my": "ဂန့်ဂေါ",
+          "district_name_en": "Gangaw",
+          "townships": [
+            { "township_name_my": "ဂန့်ဂေါ", "township_name_en": "Gangaw", "code": { "my": "ဂဂန", "en": "8/ga ga na" } },
+            { "township_name_my": "ဆော", "township_name_en": "Saw", "code": { "my": "ဆမန", "en": "8/hsa ma na" } },
+            { "township_name_my": "ထီးလင်း", "township_name_en": "Htilin", "code": { "my": "ထလန", "en": "8/hta la na" } },
+            { "township_name_my": "ကျောက်ထု(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Kyaukhtu (Former Sub-township)", "code": { "my": "ကထန", "en": "8/ka hta na" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "state_region_name_my": "မန္တလေးတိုင်းဒေသကြီး",
+      "state_region_name_en": "Mandalay Region",
+      "districts": [
+        {
+          "district_name_my": "မန္တလေး",
+          "district_name_en": "Mandalay",
+          "townships": [
+            { "township_name_my": "အောင်မြေသာစံ", "township_name_en": "Aungmyethazan", "code": { "my": "အမဇ", "en": "9/a ma za" } },
+            { "township_name_my": "ချမ်းအေးသာစံ", "township_name_en": "Chanayethazan", "code": { "my": "ခအဇ", "en": "9/kha a za" } },
+            { "township_name_my": "ချမ်းမြသာစည်", "township_name_en": "Chanmyathazi", "code": { "my": "ခမစ", "en": "9/kha ma sa" } },
+            { "township_name_my": "မဟာအောင်မြေ", "township_name_en": "Mahaaungmyay", "code": { "my": "မဟမ", "en": "9/ma ha ma" } },
+            { "township_name_my": "ပြည်ကြီးတံခွန်", "township_name_en": "Pyigyitagon", "code": { "my": "ပကခ", "en": "9/pa ka kha" } },
+            { "township_name_my": "အမရပူရ", "township_name_en": "Amarapura", "code": { "my": "အမရ", "en": "9/a ma ya" } },
+            { "township_name_my": "ပုသိမ်ကြီး", "township_name_en": "Patheingyi", "code": { "my": "ပသက", "en": "9/pa tha ka" } }
+          ]
+        },
+        {
+          "district_name_my": "ပြင်ဦးလွင်",
+          "district_name_en": "Pyinoolwin",
+          "townships": [
+            { "township_name_my": "ပြင်ဦးလွင်", "township_name_en": "Pyinoolwin", "code": { "my": "ပဥလ", "en": "9/pa u la" } },
+            { "township_name_my": "မတ္တရာ", "township_name_en": "Madaya", "code": { "my": "မတရ", "en": "9/ma ta ra" } },
+            { "township_name_my": "စဉ့်ကူး", "township_name_en": "Singu", "code": { "my": "စကန", "en": "9/sa ka na" } },
+            { "township_name_my": "သပိတ်ကျင်း", "township_name_en": "Thabeikkyin", "code": { "my": "သပက", "en": "9/tha pa ka" } },
+            { "township_name_my": "မိုးကုတ်", "township_name_en": "Mogok", "code": { "my": "မကန", "en": "9/ma ka na" } },
+            { "township_name_my": "တကောင်း(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Tagaung (Former Sub-township)", "code": { "my": "တကတ", "en": "9/ta ka ta" } }
+          ]
+        },
+        {
+          "district_name_my": "ကျောက်ဆည်",
+          "district_name_en": "Kyaukse",
+          "townships": [
+            { "township_name_my": "ကျောက်ဆည်", "township_name_en": "Kyaukse", "code": { "my": "ကဆန", "en": "9/ka hsa na" } },
+            { "township_name_my": "စဉ့်ကိုင်", "township_name_en": "Sintgaing", "code": { "my": "စကတ", "en": "9/sa ka ta" } },
+            { "township_name_my": "မြစ်သား", "township_name_en": "Myittha", "code": { "my": "မသန", "en": "9/ma tha na" } },
+            { "township_name_my": "တံတားဦး", "township_name_en": "Tada-U", "code": { "my": "တတဥ", "en": "9/ta ta u" } }
+          ]
+        },
+        {
+          "district_name_my": "မြင်းခြံ",
+          "district_name_en": "Myingyan",
+          "townships": [
+            { "township_name_my": "မြင်းခြံ", "township_name_en": "Myingyan", "code": { "my": "မခန", "en": "9/ma kha na" } },
+            { "township_name_my": "တောင်သာ", "township_name_en": "Taungtha", "code": { "my": "တသန", "en": "9/ta tha na" } },
+            { "township_name_my": "ငါန်းဇွန်း", "township_name_en": "Nganzun", "code": { "my": "ငဇန", "en": "9/nga za na" } },
+            { "township_name_my": "ကျောက်ပန်းတောင်း", "township_name_en": "Kyaukpadaung", "code": { "my": "ကပတ", "en": "9/ka pa ta" } }
+          ]
+        },
+        {
+          "district_name_my": "ညောင်ဦး",
+          "district_name_en": "Nyaung-U",
+          "townships": [
+            { "township_name_my": "နွားထိုးကြီး", "township_name_en": "Natogyi", "code": { "my": "နထက", "en": "9/na hta ka" } },
+            { "township_name_my": "ညောင်ဦး(ပုဂံ)", "township_name_en": "Nyaung-U (Bagan)", "code": { "my": "ညဥန", "en": "9/nja u na" } },
+            { "township_name_my": "ငါ့သရောက်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Ngathayauk (Former Sub-township)", "code": { "my": "ငသရ", "en": "9/nga tha ra" } }
+          ]
+        },
+        {
+          "district_name_my": "မိတ္ထီလာ",
+          "district_name_en": "Meiktila",
+          "townships": [
+            { "township_name_my": "မိတ္ထီလာ", "township_name_en": "Meiktila", "code": { "my": "မထလ", "en": "9/ma hta la" } },
+            { "township_name_my": "မလှိုင်", "township_name_en": "Mahlaing", "code": { "my": "မလန", "en": "9/ma la na" } },
+            { "township_name_my": "သာစည်", "township_name_en": "Thazi", "code": { "my": "သစန", "en": "9/tha sa na" } },
+            { "township_name_my": "ဝမ်းတွင်း", "township_name_en": "Wundwin", "code": { "my": "ဝတန", "en": "9/wa ta na" } }
+          ]
+        },
+        {
+          "district_name_my": "ရမည်းသင်း",
+          "district_name_en": "Yamethin",
+          "townships": [
+            { "township_name_my": "ရမည်းသင်း", "township_name_en": "Yamethin", "code": { "my": "ရမသ", "en": "9/ra ma tha" } },
+            { "township_name_my": "ပျော်ဘွယ်", "township_name_en": "Pyawbwe", "code": { "my": "ပဘန", "en": "9/pa ba na" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "state_region_name_my": "မွန်ပြည်နယ်",
+      "state_region_name_en": "Mon State",
+      "districts": [
+        {
+          "district_name_my": "မော်လမြိုင်",
+          "district_name_en": "Mawlamyine",
+          "townships": [
+            { "township_name_my": "မော်လမြိုင်", "township_name_en": "Mawlamyine", "code": { "my": "မလမ", "en": "10/ma la ma" } },
+            { "township_name_my": "ကျိုက်မရော", "township_name_en": "Kyaikmaraw", "code": { "my": "ကမရ", "en": "10/ka ma ra" } },
+            { "township_name_my": "ချောင်းဆုံ", "township_name_en": "Chaungzon", "code": { "my": "ခဆန", "en": "10/kha hsa na" } },
+            { "township_name_my": "သံဖြူဇရပ်", "township_name_en": "Thanbyuzayat", "code": { "my": "သဖရ", "en": "10/tha hpa ra" } },
+            { "township_name_my": "မုဒုံ", "township_name_en": "Mudon", "code": { "my": "မဒန", "en": "10/ma da na" } },
+            { "township_name_my": "ရေး", "township_name_en": "Ye", "code": { "my": "ရမန", "en": "10/ra ma na" } },
+            { "township_name_my": "လမိုင်း(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Lamaing (Former Sub-township)", "code": { "my": "လမန", "en": "10/la ma na" } },
+            { "township_name_my": "ခေါဇာ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Khawzar (Former Sub-township)", "code": { "my": "ခဇန", "en": "10/kha za na" } }
+          ]
+        },
+        {
+          "district_name_my": "သထုံ",
+          "district_name_en": "Thaton",
+          "townships": [
+            { "township_name_my": "သထုံ", "township_name_en": "Thaton", "code": { "my": "သထန", "en": "10/tha hta na" } },
+            { "township_name_my": "ပေါင်", "township_name_en": "Paung", "code": { "my": "ပမန", "en": "10/pa ma na" } },
+            { "township_name_my": "ကျိုက်ထို", "township_name_en": "Kyaikto", "code": { "my": "ကထန", "en": "10/ka hta na" } },
+            { "township_name_my": "ဘီးလင်း", "township_name_en": "Bilin", "code": { "my": "ဘလန", "en": "10/ba la na" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "state_region_name_my": "ရခိုင်ပြည်နယ်",
+      "state_region_name_en": "Rakhine State",
+      "districts": [
+        {
+          "district_name_my": "စစ်တွေ",
+          "district_name_en": "Sittwe",
+          "townships": [
+            { "township_name_my": "စစ်တွေ", "township_name_en": "Sittwe", "code": { "my": "စတန", "en": "11/sa ta na" } },
+            { "township_name_my": "ရသေ့တောင်", "township_name_en": "Rathedaung", "code": { "my": "ရသတ", "en": "11/ra tha ta" } },
+            { "township_name_my": "ပုဏ္ဏားကျွန်း", "township_name_en": "Ponnagyun", "code": { "my": "ပဏက", "en": "11/pa na ka" } },
+            { "township_name_my": "ပေါက်တော", "township_name_en": "Pauktaw", "code": { "my": "ပတန", "en": "11/pa ta na" } }
+          ]
+        },
+        {
+          "district_name_my": "မြောက်ဦး",
+          "district_name_en": "Mrauk-U",
+          "townships": [
+            { "township_name_my": "မြောက်ဦး", "township_name_en": "Mrauk-U", "code": { "my": "မဥန", "en": "11/ma u na" } },
+            { "township_name_my": "မင်းပြား", "township_name_en": "Minbya", "code": { "my": "မပန", "en": "11/ma pa na" } },
+            { "township_name_my": "ကျောက်တော်", "township_name_en": "Kyauktaw", "code": { "my": "ကတန", "en": "11/ka ta na" } },
+            { "township_name_my": "မြေပုံ", "township_name_en": "Myebon", "code": { "my": "မပတ", "en": "11/ma pa ta" } }
+          ]
+        },
+        {
+          "district_name_my": "မောင်တော",
+          "district_name_en": "Maungdaw",
+          "townships": [
+            { "township_name_my": "မောင်တော", "township_name_en": "Maungdaw", "code": { "my": "မတန", "en": "11/ma ta na" } },
+            { "township_name_my": "ဘူးသီးတောင်", "township_name_en": "Buthidaung", "code": { "my": "ဘသတ", "en": "11/ba tha ta" } },
+            { "township_name_my": "တောင်ပြိုလက်ဝဲ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Taungpyoletwe (Former Sub-township)", "code": { "my": "တပဝ", "en": "11/ta pa wa" } }
+          ]
+        },
+        {
+          "district_name_my": "ကျောက်ဖြူ",
+          "district_name_en": "Kyaukphyu",
+          "townships": [
+            { "township_name_my": "ကျောက်ဖြူ", "township_name_en": "Kyaukphyu", "code": { "my": "ကဖန", "en": "11/ka hpa na" } },
+            { "township_name_my": "ရမ်းဗြဲ", "township_name_en": "Ramree", "code": { "my": "ရဗန", "en": "11/ra ba na" } },
+            { "township_name_my": "မာန်အောင်", "township_name_en": "Manaung", "code": { "my": "မအန", "en": "11/ma a na" } },
+            { "township_name_my": "အမ်း", "township_name_en": "Ann", "code": { "my": "အမန", "en": "11/a ma na" } }
+          ]
+        },
+        {
+          "district_name_my": "သံတွဲ",
+          "district_name_en": "Thandwe",
+          "townships": [
+            { "township_name_my": "သံတွဲ", "township_name_en": "Thandwe", "code": { "my": "သတန", "en": "11/tha ta na" } },
+            { "township_name_my": "တောင်ကုတ်", "township_name_en": "Taungup", "code": { "my": "တကန", "en": "11/ta ka na" } },
+            { "township_name_my": "မအီ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Maei (Former Sub-township)", "code": { "my": "မအတ", "en": "11/ma a ta" } },
+            { "township_name_my": "ဂွ", "township_name_en": "Gwa", "code": { "my": "ဂမန", "en": "11/ga ma na" } },
+            { "township_name_my": "ကျိန္တလီ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Kyeintali (Former Sub-township)", "code": { "my": "ကတလ", "en": "11/ka ta la" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "state_region_name_my": "ရန်ကုန်တိုင်းဒေသကြီး",
+      "state_region_name_en": "Yangon Region",
+      "districts": [
+        {
+          "district_name_my": "အရှေ့ပိုင်း",
+          "district_name_en": "East",
+          "townships": [
+            { "township_name_my": "သင်္ဃန်းကျွန်း", "township_name_en": "Thingangyun", "code": { "my": "သဃက", "en": "12/tha ga ka" } },
+            { "township_name_my": "ရန်ကင်း", "township_name_en": "Yankin", "code": { "my": "ရကန", "en": "12/ra ka na" } },
+            { "township_name_my": "တောင်ဥက္ကလာပ", "township_name_en": "South Okkalapa", "code": { "my": "ဥကတ", "en": "12/u ka ta" } },
+            { "township_name_my": "မြောက်ဥက္ကလာပ", "township_name_en": "North Okkalapa", "code": { "my": "ဥကမ", "en": "12/u ka ma" } },
+            { "township_name_my": "သာကေတ", "township_name_en": "Thaketa", "code": { "my": "သကတ", "en": "12/tha ka ta" } },
+            { "township_name_my": "ဒေါပုံ", "township_name_en": "Dawbon", "code": { "my": "ဒပန", "en": "12/da pa na" } },
+            { "township_name_my": "တာမွေ", "township_name_en": "Tamwe", "code": { "my": "တမန", "en": "12/ta ma na" } },
+            { "township_name_my": "ပုဇွန်တောင်", "township_name_en": "Pazundaung", "code": { "my": "ပဇတ", "en": "12/pa za ta" } },
+            { "township_name_my": "ဗိုလ်တထောင်", "township_name_en": "Botahtaung", "code": { "my": "ဗတထ", "en": "12/ba ta hta" } },
+            { "township_name_my": "မင်္ဂလာတောင်ညွှန့်", "township_name_en": "Mingala Taungnyunt", "code": { "my": "မဂတ", "en": "12/ma ga ta" } },
+            { "township_name_my": "ဒဂုံမြောက်ပိုင်း", "township_name_en": "North Dagon", "code": { "my": "ဒဂမ", "en": "12/da ga ma" } },
+            { "township_name_my": "ဒဂုံအရှေ့ပိုင်း", "township_name_en": "East Dagon", "code": { "my": "ဒဂရ", "en": "12/da ga ra" } },
+            { "township_name_my": "ဒဂုံတောင်ပိုင်း", "township_name_en": "South Dagon", "code": { "my": "ဒဂတ", "en": "12/da ga ta" } },
+            { "township_name_my": "ဒဂုံဆိပ်ကမ်း", "township_name_en": "Dagon Seikkan", "code": { "my": "ဒဂဆ", "en": "12/da ga hsa" } }
+          ]
+        },
+        {
+          "district_name_my": "အနောက်ပိုင်း",
+          "district_name_en": "West",
+          "townships": [
+            { "township_name_my": "ကျောက်တံတား", "township_name_en": "Kyauktada", "code": { "my": "ကတတ", "en": "12/ka ta ta" } },
+            { "township_name_my": "ပန်းဘဲတန်း", "township_name_en": "Pabedan", "code": { "my": "ပဘတ", "en": "12/pa ba ta" } },
+            { "township_name_my": "လမ်းမတော်", "township_name_en": "Lanmadaw", "code": { "my": "လမတ", "en": "12/la ma ta" } },
+            { "township_name_my": "လသာ", "township_name_en": "Latha", "code": { "my": "လသန", "en": "12/la tha na" } },
+            { "township_name_my": "အလုံ", "township_name_en": "Ahlon", "code": { "my": "အလန", "en": "12/a la na" } },
+            { "township_name_my": "ကြည့်မြင်တိုင်", "township_name_en": "Kyimyindaing", "code": { "my": "ကမတ", "en": "12/ka ma ta" } },
+            { "township_name_my": "စမ်းချောင်း", "township_name_en": "Sanchaung", "code": { "my": "စခန", "en": "12/sa kha na" } },
+            { "township_name_my": "လှိုင်", "township_name_en": "Hlaing", "code": { "my": "လမန", "en": "12/la ma na" } },
+            { "township_name_my": "ကမာရွတ်", "township_name_en": "Kamayut", "code": { "my": "ကမရ", "en": "12/ka ma ra" } },
+            { "township_name_my": "မရမ်းကုန်း", "township_name_en": "Mayangon", "code": { "my": "မရက", "en": "12/ma ra ka" } },
+            { "township_name_my": "ဒဂုံ", "township_name_en": "Dagon", "code": { "my": "ဒဂန", "en": "12/da ga na" } },
+            { "township_name_my": "ဗဟန်း", "township_name_en": "Bahan", "code": { "my": "ဗဟန", "en": "12/ba ha na" } },
+            { "township_name_my": "ဆိပ်ကမ်း", "township_name_en": "Seikkan", "code": { "my": "ဆကန", "en": "12/hsa ka na" } }
+          ]
+        },
+        {
+          "district_name_my": "တောင်ပိုင်း",
+          "district_name_en": "South",
+          "townships": [
+            { "township_name_my": "သန်လျင်", "township_name_en": "Thanlyin", "code": { "my": "သလန", "en": "12/tha la na" } },
+            { "township_name_my": "ကျောက်တန်း", "township_name_en": "Kyauktan", "code": { "my": "ကတန", "en": "12/ka ta na" } },
+            { "township_name_my": "တံတား(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Tada (Former Sub-township)", "code": { "my": "တတတ", "en": "12/ta ta ta" } },
+            { "township_name_my": "သုံးခွ", "township_name_en": "Thongwa", "code": { "my": "သခန", "en": "12/tha kha na" } },
+            { "township_name_my": "ခရမ်း", "township_name_en": "Kayan", "code": { "my": "ခရန", "en": "12/kha ra na" } },
+            { "township_name_my": "တွံတေး", "township_name_en": "Twantay", "code": { "my": "တတန", "en": "12/ta ta na" } },
+            { "township_name_my": "ကော့မှူး", "township_name_en": "Kawhmu", "code": { "my": "ကမန", "en": "12/ka ma na" } },
+            { "township_name_my": "ကွမ်းခြံကုန်း", "township_name_en": "Kungyangon", "code": { "my": "ကခက", "en": "12/ka kha ka" } },
+            { "township_name_my": "ဒလ", "township_name_en": "Dala", "code": { "my": "ဒလန", "en": "12/da la na" } },
+            { "township_name_my": "ဆိပ်ကြီးခနောင်တို", "township_name_en": "Seikkyi Kanaungto", "code": { "my": "ဆကခ", "en": "12/hsa ka kha" } },
+            { "township_name_my": "ကိုကိုးကျွန်း", "township_name_en": "Cocokyun", "code": { "my": "ကကက", "en": "12/ka ka ka" } }
+          ]
+        },
+        {
+          "district_name_my": "မြောက်ပိုင်း",
+          "district_name_en": "North",
+          "townships": [
+            { "township_name_my": "အင်းစိန်", "township_name_en": "Insein", "code": { "my": "အစန", "en": "12/a sa na" } },
+            { "township_name_my": "မင်္ဂလာဒုံ", "township_name_en": "Mingaladon", "code": { "my": "မဂဒ", "en": "12/ma ga da" } },
+            { "township_name_my": "မှော်ဘီ", "township_name_en": "Hmawbi", "code": { "my": "မဘန", "en": "12/ma ba na" } },
+            { "township_name_my": "လှည်းကူး", "township_name_en": "Hlegu", "code": { "my": "လကန", "en": "12/la ka na" } },
+            { "township_name_my": "တိုက်ကြီး", "township_name_en": "Taikkyi", "code": { "my": "တကန", "en": "12/ta ka na" } },
+            { "township_name_my": "ထန်းတပင်", "township_name_en": "Htantabin", "code": { "my": "ထတပ", "en": "12/hta ta pa" } },
+            { "township_name_my": "ရွှေပြည်သာ", "township_name_en": "Shwepyitha", "code": { "my": "ရပသ", "en": "12/ra pa tha" } },
+            { "township_name_my": "လှိုင်သာယာ", "township_name_en": "Hlaingthaya", "code": { "my": "လသယ", "en": "12/la tha ya" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "state_region_name_my": "ရှမ်းပြည်နယ်",
+      "state_region_name_en": "Shan State",
+      "districts": [
+        {
+          "district_name_my": "တောင်ကြီး",
+          "district_name_en": "Taunggyi",
+          "townships": [
+            { "township_name_my": "တောင်ကြီး", "township_name_en": "Taunggyi", "code": { "my": "တကန", "en": "13/ta ka na" } },
+            { "township_name_my": "ဟိုပုံး", "township_name_en": "Hopong", "code": { "my": "ဟပန", "en": "13/ha pa na" } },
+            { "township_name_my": "ညောင်ရွှေ", "township_name_en": "Nyaungshwe", "code": { "my": "ညရန", "en": "13/nja ra na" } },
+            { "township_name_my": "ဆီဆိုင်", "township_name_en": "Hsihseng", "code": { "my": "ဆဆန", "en": "13/hsa hsa na" } },
+            { "township_name_my": "ကလော", "township_name_en": "Kalaw", "code": { "my": "ကလန", "en": "13/ka la na" } },
+            { "township_name_my": "ပင်းတယ", "township_name_en": "Pindaya", "code": { "my": "ပတယ", "en": "13/pa ta ya" } },
+            { "township_name_my": "ရွာငံ", "township_name_en": "Ywangan", "code": { "my": "ရငန", "en": "13/ra nga na" } },
+            { "township_name_my": "ရပ်စောက်", "township_name_en": "Lawksawk", "code": { "my": "ရစန", "en": "13/ra sa na" } },
+            { "township_name_my": "ပင်လောင်း", "township_name_en": "Pinlaung", "code": { "my": "ပလန", "en": "13/pa la na" } },
+            { "township_name_my": "ဖယ်ခုံ", "township_name_en": "Pekon", "code": { "my": "ဖခန", "en": "13/hpa kha na" } },
+            { "township_name_my": "ကျောက်တလုံး(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Kyauktalone (Former Sub-township)", "code": { "my": "ကတလ", "en": "13/ka ta la" } },
+            { "township_name_my": "နောင်တရား(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Naungtayar (Former Sub-township)", "code": { "my": "နတရ", "en": "13/na ta ra" } },
+            { "township_name_my": "အင်တော(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Indaw (Former Sub-township)", "code": { "my": "အတန", "en": "13/a ta na" } }
+          ]
+        },
+        {
+          "district_name_my": "လွိုင်လင်",
+          "district_name_en": "Loilen",
+          "townships": [
+            { "township_name_my": "လွိုင်လင်", "township_name_en": "Loilen", "code": { "my": "လလန", "en": "13/la la na" } },
+            { "township_name_my": "လဲချား", "township_name_en": "Lai-Hka", "code": { "my": "လခန", "en": "13/la kha na" } },
+            { "township_name_my": "နမ့်စန်", "township_name_en": "Nansang", "code": { "my": "နစန", "en": "13/na sa na" } },
+            { "township_name_my": "ကွန်ဟိန်း", "township_name_en": "Kunhing", "code": { "my": "ကဟန", "en": "13/ka ha na" } },
+            { "township_name_my": "ကျေးသီး", "township_name_en": "Kehsi", "code": { "my": "ကသန", "en": "13/ka tha na" } },
+            { "township_name_my": "မိုင်းကိုင်", "township_name_en": "Mongkaing", "code": { "my": "မကန", "en": "13/ma ka na" } },
+            { "township_name_my": "မိုင်းရှူး", "township_name_en": "Monghsu", "code": { "my": "မရန", "en": "13/ma ra na" } },
+            { "township_name_my": "ပင်လုံ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Panglong (Former Sub-township)", "code": { "my": "ပလတ", "en": "13/pa la ta" } },
+            { "township_name_my": "မိုင်းနောင်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Mongnawng (Former Sub-township)", "code": { "my": "မနတ", "en": "13/ma na ta" } },
+            { "township_name_my": "ခိုလမ်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Kholan (Former Sub-township)", "code": { "my": "ခလန", "en": "13/kha la na" } },
+            { "township_name_my": "ကာလိ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Karli (Former Sub-township)", "code": { "my": "ကလဒ", "en": "13/ka la da" } },
+            { "township_name_my": "မိုင်းစံ(မုန်းဆန်းခွဲ)", "township_name_en": "Minesan (Former Sub-township)", "code": { "my": "မစန", "en": "13/ma sa na" } }
+          ]
+        },
+        {
+          "district_name_my": "လင်းခေး",
+          "district_name_en": "Langkho",
+          "townships": [
+            { "township_name_my": "လင်းခေး", "township_name_en": "Langkho", "code": { "my": "လခတ", "en": "13/la kha ta" } },
+            { "township_name_my": "မိုးနဲ", "township_name_en": "Mongnai", "code": { "my": "မနန", "en": "13/ma na na" } },
+            { "township_name_my": "မောက်မယ်", "township_name_en": "Mawkmai", "code": { "my": "မမန", "en": "13/ma ma na" } },
+            { "township_name_my": "မိုင်းပန်", "township_name_en": "Mongpan", "code": { "my": "မပန", "en": "13/ma pa na" } },
+            { "township_name_my": "ဟိုမိန်း(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Homane (Former Sub-township)", "code": { "my": "ဟမန", "en": "13/ha ma na" } },
+            { "township_name_my": "ကျိုင်းတောင်း(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Kengtaung (Former Sub-township)", "code": { "my": "ကတတ", "en": "13/ka ta ta" } }
+          ]
+        },
+        {
+          "district_name_my": "လားရှိုး",
+          "district_name_en": "Lashio",
+          "townships": [
+            { "township_name_my": "လားရှိုး", "township_name_en": "Lashio", "code": { "my": "လရန", "en": "13/la ra na" } },
+            { "township_name_my": "သိန္နီ", "township_name_en": "Hseni", "code": { "my": "သနန", "en": "13/tha na na" } },
+            { "township_name_my": "တန့်ယန်း", "township_name_en": "Tangyan", "code": { "my": "တယန", "en": "13/ta ya na" } },
+            { "township_name_my": "မိုင်းရယ်", "township_name_en": "Mongyai", "code": { "my": "မရတ", "en": "13/ma ra ta" } },
+            { "township_name_my": "ကွမ်းလုံ", "township_name_en": "Kunlong", "code": { "my": "ကလတ", "en": "13/ka la ta" } }
+          ]
+        },
+        {
+          "district_name_my": "မက်မန်း",
+          "district_name_en": "Matman",
+          "townships": [
+            { "township_name_my": "မက်မန်း(ပန်ယန်း)", "township_name_en": "Matman (Panyang)", "code": { "my": "ပယန", "en": "13/pa ya na" } },
+            { "township_name_my": "နားဖန်း", "township_name_en": "Narphan", "code": { "my": "နဖန", "en": "13/na hpa na" } },
+            { "township_name_my": "မန်ဖန့်", "township_name_en": "Manphan", "code": { "my": "မဖတ", "en": "13/ma hpa ta" } },
+            { "township_name_my": "ပန်ဆန်း", "township_name_en": "Pangsang", "code": { "my": "ပဆန", "en": "13/pa hsa na" } },
+            { "township_name_my": "မန်ကန်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Mankan (Former Sub-township)", "code": { "my": "မကထ", "en": "13/ma ka hta" } }
+          ]
+        },
+        {
+          "district_name_my": "မူဆယ်",
+          "district_name_en": "Muse",
+          "townships": [
+            { "township_name_my": "မူဆယ်", "township_name_en": "Muse", "code": { "my": "မဆတ", "en": "13/ma hsa ta" } },
+            { "township_name_my": "နမ့်ခမ်း", "township_name_en": "Namhkam", "code": { "my": "နခန", "en": "13/na kha na" } },
+            { "township_name_my": "ကွတ်ခိုင်", "township_name_en": "Kutkai", "code": { "my": "ကခန", "en": "13/ka kha na" } },
+            { "township_name_my": "တာမိုးည(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Tamonyan (Former Sub-township)", "code": { "my": "တမည", "en": "13/ta ma nja" } },
+            { "township_name_my": "မန်ဟီးရိုး(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Manhero (Former Sub-township)", "code": { "my": "မဟရ", "en": "13/ma ha ra" } },
+            { "township_name_my": "မုန်းကိုး(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Mongkoe (Former Sub-township)", "code": { "my": "မကတ", "en": "13/ma ka ta" } },
+            { "township_name_my": "ပန်ဆိုင်း(ကြူကုတ်)(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Pansai (Kyu-hkok) (Former Sub-township)", "code": { "my": "ပဆတ", "en": "13/pa hsa ta" } }
+          ]
+        },
+        {
+          "district_name_my": "ကျောက်မဲ",
+          "district_name_en": "Kyaukme",
+          "townships": [
+            { "township_name_my": "ကျောက်မဲ", "township_name_en": "Kyaukme", "code": { "my": "ကမန", "en": "13/ka ma na" } },
+            { "township_name_my": "သီပေါ", "township_name_en": "Hsipaw", "code": { "my": "သပန", "en": "13/tha pa na" } },
+            { "township_name_my": "နောင်ချို", "township_name_en": "Nawnghkio", "code": { "my": "နခတ", "en": "13/na kha ta" } },
+            { "township_name_my": "နမ္မတူ", "township_name_en": "Namtu", "code": { "my": "နမတ", "en": "13/na ma ta" } },
+            { "township_name_my": "နမ့်ဆန်", "township_name_en": "Namhsan", "code": { "my": "နဆန", "en": "13/na hsa na" } },
+            { "township_name_my": "မန်တုံ", "township_name_en": "Manton", "code": { "my": "မတတ", "en": "13/ma ta ta" } },
+            { "township_name_my": "မိုင်းငေါ့(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Mongngot (Former Sub-township)", "code": { "my": "မငန", "en": "13/ma nga na" } },
+            { "township_name_my": "မိုင်းလုံ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Monglong (Former Sub-township)", "code": { "my": "မလတ", "en": "13/ma la ta" } }
+          ]
+        },
+        {
+          "district_name_my": "မိုးမိတ်",
+          "district_name_en": "Momeik",
+          "townships": [
+            { "township_name_my": "မိုးမိတ်", "township_name_en": "Momeik", "code": { "my": "မမတ", "en": "13/ma ma ta" } },
+            { "township_name_my": "မဘိမ်း", "township_name_en": "Mabein", "code": { "my": "မဘန", "en": "13/ma ba na" } }
+          ]
+        },
+        {
+          "district_name_my": "ဟိုပန်",
+          "district_name_en": "Hopang",
+          "townships": [
+            { "township_name_my": "ဟိုပန်", "township_name_en": "Hopang", "code": { "my": "ဟပတ", "en": "13/ha pa ta" } },
+            { "township_name_my": "ပန်ဝိုင်", "township_name_en": "Panwine", "code": { "my": "ပဝန", "en": "13/pa wa na" } },
+            { "township_name_my": "မိုင်းမော", "township_name_en": "Mongmaw", "code": { "my": "မမထ", "en": "13/ma ma hta" } },
+            { "township_name_my": "နမ့်တစ်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Namhtit (Former Sub-township)", "code": { "my": "နတန", "en": "13/na ta na" } },
+            { "township_name_my": "ပန်လုံ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Panglong (Former Sub-township)", "code": { "my": "ပလထ", "en": "13/pa la hta" } }
+          ]
+        },
+        {
+          "district_name_my": "လောက်ကိုင်",
+          "district_name_en": "Laukkaing",
+          "townships": [
+            { "township_name_my": "လောက်ကိုင်", "township_name_en": "Laukkaing", "code": { "my": "လကန", "en": "13/la ka na" } },
+            { "township_name_my": "ကုန်းကြမ်း", "township_name_en": "Konkyan", "code": { "my": "ကကန", "en": "13/ka ka na" } },
+            { "township_name_my": "ချင်းရွှေဟော်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Chinshwehaw (Former Sub-township)", "code": { "my": "ခရဟ", "en": "13/kha ra ha" } },
+            { "township_name_my": "မော်ထိုက်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Mawhtike (Former Sub-township)", "code": { "my": "မထတ", "en": "13/ma hta ta" } }
+          ]
+        },
+        {
+          "district_name_my": "ကျိုင်းတုံ",
+          "district_name_en": "Kengtung",
+          "townships": [
+            { "township_name_my": "ကျိုင်းတုံ", "township_name_en": "Kengtung", "code": { "my": "ကတန", "en": "13/ka ta na" } },
+            { "township_name_my": "မိုင်းလား", "township_name_en": "Mongla", "code": { "my": "မလန", "en": "13/ma la na" } },
+            { "township_name_my": "မိုင်းယန်း", "township_name_en": "Mongyang", "code": { "my": "မယန", "en": "13/ma ya na" } },
+            { "township_name_my": "မိုင်းပေါက်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Mong Pawk (Former Sub-township)", "code": { "my": "မပထ", "en": "13/ma pa hta" } },
+            { "township_name_my": "မိုင်းခတ်", "township_name_en": "Mong Khet", "code": { "my": "မခန", "en": "13/ma kha na" } },
+            { "township_name_my": "မိုင်းပျဉ်း", "township_name_en": "Mong Ping", "code": { "my": "မပတ", "en": "13/ma pa ta" } },
+            { "township_name_my": "တုံတာ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Tongta (Former Sub-township)", "code": { "my": "တတန", "en": "13/ta ta na" } }
+          ]
+        },
+        {
+          "district_name_my": "မိုင်းဆတ်",
+          "district_name_en": "Mong Hsat",
+          "townships": [
+            { "township_name_my": "မိုင်းဆတ်", "township_name_en": "Mong Hsat", "code": { "my": "မဆန", "en": "13/ma hsa na" } },
+            { "township_name_my": "မိုင်းခုတ်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Mong Khoke (Former Sub-township)", "code": { "my": "မခတ", "en": "13/ma kha ta" } },
+            { "township_name_my": "မိုင်းတုံ", "township_name_en": "Mong Ton", "code": { "my": "မတန", "en": "13/ma ta na" } },
+            { "township_name_my": "ပုံပါကျင်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Ponparkyin (Former Sub-township)", "code": { "my": "ပပက", "en": "13/pa pa ka" } },
+            { "township_name_my": "မုံးထ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Mone Hta (Former Sub-township)", "code": { "my": "မထန", "en": "13/ma hta na" } }
+          ]
+        },
+        {
+          "district_name_my": "မိုင်းဖြတ်",
+          "district_name_en": "Mong Hpyak",
+          "townships": [
+            { "township_name_my": "မိုင်းဖြတ်", "township_name_en": "Mong Hpyak", "code": { "my": "မဖန", "en": "13/ma hpa na" } },
+            { "township_name_my": "မိုင်းယောင်း", "township_name_en": "Mong Yawng", "code": { "my": "မယတ", "en": "13/ma ya ta" } },
+            { "township_name_my": "မိုင်းယု(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Mong Yul (Former Sub-township)", "code": { "my": "မယထ", "en": "13/ma ya hta" } }
+          ]
+        },
+        {
+          "district_name_my": "တာချီလိတ်",
+          "district_name_en": "Tachileik",
+          "townships": [
+            { "township_name_my": "တာချီလိတ်", "township_name_en": "Tachileik", "code": { "my": "တခလ", "en": "13/ta kha la" } },
+            { "township_name_my": "တာလေ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Tarlay (Former Sub-township)", "code": { "my": "တလန", "en": "13/ta la na" } },
+            { "township_name_my": "ကျိုင်းလပ်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Kyainglap (Former Sub-township)", "code": { "my": "ကလထ", "en": "13/ka la hta" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "state_region_name_my": "ဧရာဝတီတိုင်းဒေသကြီး",
+      "state_region_name_en": "Ayeyarwady Region",
+      "districts": [
+        {
+          "district_name_my": "ပုသိမ်",
+          "district_name_en": "Pathein",
+          "townships": [
+            { "township_name_my": "ပုသိမ်", "township_name_en": "Pathein", "code": { "my": "ပသန", "en": "14/pa tha na" } },
+            { "township_name_my": "ရွှေသောင်ယံ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Shwethaungyan (Former Sub-township)", "code": { "my": "ရသယ", "en": "14/ra tha ya" } },
+            { "township_name_my": "ငွေဆောင်(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Ngwesaung (Former Sub-township)", "code": { "my": "ငဆန", "en": "14/nga hsa na" } },
+            { "township_name_my": "ကန်ကြီးထောင့်", "township_name_en": "Kangyidaunt", "code": { "my": "ကကထ", "en": "14/ka ka hta" } },
+            { "township_name_my": "ငပုတော", "township_name_en": "Ngapudaw", "code": { "my": "ငပတ", "en": "14/nga pa ta" } },
+            { "township_name_my": "ဟိုင်းကြီးကျွန်း(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Hainggyikyun (Former Sub-township)", "code": { "my": "ဟကက", "en": "14/ha ka ka" } },
+            { "township_name_my": "ငရုတ်ကောင်း(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Ngayokaung (Former Sub-township)", "code": { "my": "ငရက", "en": "14/nga ra ka" } },
+            { "township_name_my": "သာပေါင်း", "township_name_en": "Thabaung", "code": { "my": "သပန", "en": "14/tha pa na" } },
+            { "township_name_my": "ကျောင်းကုန်း", "township_name_en": "Kyonpyaw", "code": { "my": "ကကန", "en": "14/ka ka na" } },
+            { "township_name_my": "ရေကြည်", "township_name_en": "Yekyi", "code": { "my": "ရကန", "en": "14/ra ka na" } },
+            { "township_name_my": "ငသိုင်းချောင်း(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Ngathaingchaung (Former Sub-township)", "code": { "my": "ငသခ", "en": "14/nga tha kha" } },
+            { "township_name_my": "ကျုံပျော်", "township_name_en": "Kyonpyaw", "code": { "my": "ကပန", "en": "14/ka pa na" } }
+          ]
+        },
+        {
+          "district_name_my": "ဟင်္သာတ",
+          "district_name_en": "Hinthada",
+          "townships": [
+            { "township_name_my": "ဟင်္သာတ", "township_name_en": "Hinthada", "code": { "my": "ဟသတ", "en": "14/ha tha ta" } },
+            { "township_name_my": "ဇလွန်", "township_name_en": "Zalun", "code": { "my": "ဇလန", "en": "14/za la na" } },
+            { "township_name_my": "လေးမျက်နှာ", "township_name_en": "Lemyethna", "code": { "my": "လမန", "en": "14/la ma na" } },
+            { "township_name_my": "အင်္ဂပူ", "township_name_en": "Ingapu", "code": { "my": "အဂပ", "en": "14/a ga pa" } },
+            { "township_name_my": "မြန်အောင်", "township_name_en": "Myanaung", "code": { "my": "မအန", "en": "14/ma a na" } },
+            { "township_name_my": "ကြံခင်း", "township_name_en": "Kyangin", "code": { "my": "ကခန", "en": "14/ka kha na" } }
+          ]
+        },
+        {
+          "district_name_my": "မအူပင်",
+          "district_name_en": "Ma-ubin",
+          "townships": [
+            { "township_name_my": "မအူပင်", "township_name_en": "Ma-ubin", "code": { "my": "မအပ", "en": "14/ma a pa" } },
+            { "township_name_my": "ပန်းတနော်", "township_name_en": "Pantanaw", "code": { "my": "ပတန", "en": "14/pa ta na" } },
+            { "township_name_my": "ညောင်တုန်း", "township_name_en": "Nyaungdon", "code": { "my": "ညတန", "en": "14/nja ta na" } },
+            { "township_name_my": "ဓနုဖြူ", "township_name_en": "Danuphyu", "code": { "my": "ဓနဖ", "en": "14/da na hpa" } }
+          ]
+        },
+        {
+          "district_name_my": "ဖျာပုံ",
+          "district_name_en": "Pyapon",
+          "townships": [
+            { "township_name_my": "ဖျာပုံ", "township_name_en": "Pyapon", "code": { "my": "ဖပန", "en": "14/hpa pa na" } },
+            { "township_name_my": "အမာ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Ahmar (Former Sub-township)", "code": { "my": "အမတ", "en": "14/a ma ta" } },
+            { "township_name_my": "ဘိုကလေး", "township_name_en": "Bogale", "code": { "my": "ဘကလ", "en": "14/ba ka la" } },
+            { "township_name_my": "ကျိုက်လတ်", "township_name_en": "Kyaiklat", "code": { "my": "ကလန", "en": "14/ka la na" } },
+            { "township_name_my": "ဒေးဒရဲ", "township_name_en": "Dedaye", "code": { "my": "ဒဒရ", "en": "14/da da ya" } }
+          ]
+        },
+        {
+          "district_name_my": "လပွတ္တာ",
+          "district_name_en": "Labutta",
+          "townships": [
+            { "township_name_my": "လပွတ္တာ", "township_name_en": "Labutta", "code": { "my": "လပတ", "en": "14/la pa ta" } },
+            { "township_name_my": "ပြင်စလူ(ယခင်မြို့နယ်ခွဲ)", "township_name_en": "Pyinsalu (Former Sub-township)", "code": { "my": "ပစလ", "en": "14/pa sa la" } },
+            { "township_name_my": "မော်လမြိုင်ကျွန်း", "township_name_en": "Mawlamyinegyun", "code": { "my": "မမက", "en": "14/ma ma ka" } }
+          ]
+        },
+        {
+          "district_name_my": "မြောင်းမြ",
+          "district_name_en": "Myaungmya",
+          "townships": [
+            { "township_name_my": "မြောင်းမြ", "township_name_en": "Myaungmya", "code": { "my": "မမန", "en": "14/ma ma na" } },
+            { "township_name_my": "အိမ်မဲ", "township_name_en": "Einme", "code": { "my": "အမန", "en": "14/a ma na" } },
+            { "township_name_my": "ဝါးခယ်မ", "township_name_en": "Wakema", "code": { "my": "ဝခမ", "en": "14/wa kha ma" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "state_region_name_my": "ပြည်ထောင်စုနယ်မြေ(နေပြည်တော်)",
+      "state_region_name_en": "Naypyidaw Union Territory",
+      "districts": [
+        {
+          "district_name_my": "ဥတ္တရ",
+          "district_name_en": "Ottara",
+          "townships": [
+            { "township_name_my": "ဥတ္တရသီရိ", "township_name_en": "Ottarathiri", "code": { "my": "ဥတသ", "en": "9/u ta tha" } },
+            { "township_name_my": "ဇေယျာသီရိ", "township_name_en": "Zeyathiri", "code": { "my": "ဇယသ", "en": "9/za ya tha" } },
+            { "township_name_my": "ပုဗ္ဗသီရိ", "township_name_en": "Pobbathiri", "code": { "my": "ပဗသ", "en": "9/pa ba tha" } },
+            { "township_name_my": "တပ်ကုန်း", "township_name_en": "Tatkon", "code": { "my": "တကန", "en": "9/ta ka na" } }
+          ]
+        },
+        {
+          "district_name_my": "ဒက္ခိဏ",
+          "district_name_en": "Dekkhina",
+          "townships": [
+            { "township_name_my": "ဒက္ခိဏသီရိ", "township_name_en": "Dekkhinathiri", "code": { "my": "ဒခသ", "en": "9/da kha tha" } },
+            { "township_name_my": "ဇမ္ဗူသီရိ", "township_name_en": "Zabuthiri", "code": { "my": "ဇဗသ", "en": "9/za ba tha" } },
+            { "township_name_my": "ပျဉ်းမနား", "township_name_en": "Pyinmana", "code": { "my": "ပမန", "en": "9/pa ma na" } },
+            { "township_name_my": "လယ်ဝေး", "township_name_en": "Lewe", "code": { "my": "လဝန", "en": "9/la wa na" } }
+          ]
+        }
+      ]
+    }
+  ]
