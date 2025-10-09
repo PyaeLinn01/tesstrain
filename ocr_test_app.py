@@ -7,6 +7,9 @@ import os
 import tempfile
 import shutil
 from pathlib import Path
+import json
+import re
+from difflib import SequenceMatcher
 
 # Configure page
 st.set_page_config(
@@ -130,6 +133,99 @@ def perform_ocr(image, config):
         st.error(f"OCR Error: {str(e)}")
         return "", "", ""
 
+def _load_nrc_my_list(nrc_path: Path) -> list[str]:
+    """Load all Myanmar NRC prefix strings from nrc.json into a flat list.
+
+    Each entry looks like: "၁၂/သလန(နိုင်)". We'll match against these.
+    """
+    try:
+        with open(nrc_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        result = []
+        # nrc.json is a dict of id -> list of {my,en}
+        for _, arr in data.items():
+            for item in arr:
+                my = item.get("my")
+                if my:
+                    result.append(my)
+        return result
+    except Exception as e:
+        st.warning(f"Failed to load NRC list: {e}")
+        return []
+
+def _similarity(a: str, b: str) -> float:
+    return SequenceMatcher(None, a, b).ratio()
+
+def _split_serial(line: str) -> tuple[str, str]:
+    """Split line into prefix (non-serial) and trailing serial digits (Myanmar or ASCII).
+    If no trailing digits, serial is empty and prefix is the whole line.
+    """
+    # Match trailing run of ASCII or Myanmar digits
+    m = re.search(r"([0-9\u1040-\u1049]+)$", line)
+    if m:
+        start = m.start(1)
+        return line[:start], line[start:]
+    return line, ""
+
+def _extract_marker_and_body(prefix: str) -> tuple[str, str, str]:
+    """Extract leading marker like 'အမှတ်' and its separator, and the rest body.
+    Returns (marker, sep, body). If no marker, returns ("", "", prefix).
+    """
+    m = re.match(r"^(အမှတ်)([_\s\-]?)", prefix)
+    if m:
+        marker = m.group(1)
+        sep = m.group(2) or "_"
+        body = prefix[m.end():]
+        return marker, sep, body
+    return "", "", prefix
+
+def _normalize_for_match(s: str) -> str:
+    """Normalize a string to improve fuzzy matching by removing spaces and underscores.
+    Keep Myanmar letters, digits, slash and parentheses.
+    """
+    s = s.replace(" ", "").replace("_", "")
+    return s
+
+def correct_id_line(line: str, nrc_list: list[str], min_ratio: float = 0.6) -> str:
+    """If this line looks like an NRC id line, replace its prefix with the closest NRC pattern.
+    - Preserve trailing serial digits
+    - Keep 'အမှတ်' and its separator if present
+    - Skip lines that start with 'မွေး'
+    """
+    if line.strip().startswith("မွေး"):
+        return line
+
+    prefix, serial = _split_serial(line.strip())
+    marker, sep, body = _extract_marker_and_body(prefix)
+
+    if not body:
+        # Nothing meaningful to match
+        return line
+
+    body_norm = _normalize_for_match(body)
+    best = None
+    best_score = 0.0
+    for cand in nrc_list:
+        score = _similarity(body_norm, _normalize_for_match(cand))
+        if score > best_score:
+            best_score = score
+            best = cand
+
+    if best and best_score >= min_ratio:
+        if marker:
+            fixed_prefix = f"{marker}{sep}{best}"
+        else:
+            fixed_prefix = best
+        return f"{fixed_prefix}{serial}"
+    return line
+
+def postprocess_text(text: str, nrc_list: list[str]) -> str:
+    lines = text.splitlines()
+    out_lines = []
+    for ln in lines:
+        out_lines.append(correct_id_line(ln, nrc_list))
+    return "\n".join(out_lines)
+
 def draw_boxes(image, boxes):
     """Draw bounding boxes on the image"""
     if len(image.shape) == 2:
@@ -160,6 +256,10 @@ def main():
     if not config:
         return
     
+    # Load NRC list for postprocessing
+    nrc_path = Path("/Users/pyaelinn/tessFinetune/tesstrain/nrc.json")
+    nrc_list = _load_nrc_my_list(nrc_path)
+
     # Sidebar
     st.sidebar.markdown("## ⚙️ Settings")
     
@@ -206,6 +306,7 @@ def main():
         
         with st.spinner("Performing OCR..."):
             text, boxes, data = perform_ocr(preprocessed_image, config)
+            corrected = postprocess_text(text, nrc_list) if nrc_list else text
         
         if text:
             # Display results in columns
@@ -215,6 +316,8 @@ def main():
                 st.markdown('<div class="result-box">', unsafe_allow_html=True)
                 st.markdown("**Extracted Text:**")
                 st.text_area("OCR Result", text, height=200, key="ocr_result")
+                st.markdown("**Corrected Text (ID postprocessed):**")
+                st.text_area("Corrected Result", corrected, height=200, key="ocr_corrected")
                 st.markdown('</div>', unsafe_allow_html=True)
             
             with col2:
