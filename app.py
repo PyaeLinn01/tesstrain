@@ -318,12 +318,15 @@ def _dob_from_groups(groups: list[str]) -> tuple[str, str, str] | None:
         if len(prev) >= 2:
             dd, mm = prev[0], prev[1]
     if not (dd and mm and yyyy):
-        # fallback: take first 8+ digits from concatenation
-        all_digits = "".join(g_ascii)
-        all_digits = re.sub(r"[^0-9]", "", all_digits)
-        if len(all_digits) < 8:
-            return None
-        dd, mm, yyyy = all_digits[:2], all_digits[2:4], all_digits[4:8]
+        # fallback: take digits, fill missing with defaults to enforce format
+        all_digits = re.sub(r"[^0-9]", "", "".join(g_ascii))
+        # Build dd, mm, yyyy with defaults if insufficient digits
+        dd = (all_digits[0:2] if len(all_digits) >= 2 else "01")
+        mm = (all_digits[2:4] if len(all_digits) >= 4 else (all_digits[2:3] if len(all_digits) >= 3 else "01"))
+        yyyy = (all_digits[4:8] if len(all_digits) >= 8 else "2000")
+    # Dedupe duplicated month like '88' -> '8'
+    if len(mm) >= 2 and mm[0] == mm[1]:
+        mm = mm[0]
     # Clamp and pad
     dd_i = _clamp_int(int(dd[:2] or 0), 1, 31)
     mm_i = _clamp_int(int(mm[:2] or 0), 1, 12)
