@@ -324,13 +324,23 @@ def _dob_from_groups(groups: list[str]) -> tuple[str, str, str] | None:
         dd = (all_digits[0:2] if len(all_digits) >= 2 else "01")
         mm = (all_digits[2:4] if len(all_digits) >= 4 else (all_digits[2:3] if len(all_digits) >= 3 else "01"))
         yyyy = (all_digits[4:8] if len(all_digits) >= 8 else "2000")
-    # Dedupe duplicated month like '88' -> '8'
+    # Dedupe duplicated month only if the two-digit value is > 12 (e.g., '88' -> '8'),
+    # but preserve valid '11' or '12'.
     if len(mm) >= 2 and mm[0] == mm[1]:
-        mm = mm[0]
-    # Clamp and pad
+        try:
+            mm_val = int(mm[:2])
+        except ValueError:
+            mm_val = 99
+        if mm_val > 12:
+            mm = mm[0]
+    # Clamp day and month
     dd_i = _clamp_int(int(dd[:2] or 0), 1, 31)
     mm_i = _clamp_int(int(mm[:2] or 0), 1, 12)
-    yyyy_i = int(yyyy[:4]) if len(yyyy) >= 4 else 2000
+    # Ensure year starts with 1 or 2; otherwise default to 2000
+    yyyy_str = yyyy[:4] if len(yyyy) >= 4 else "2000"
+    if not (yyyy_str and yyyy_str[0] in ("1", "2")):
+        yyyy_str = "2000"
+    yyyy_i = int(yyyy_str)
     return f"{dd_i:02d}", f"{mm_i:02d}", f"{yyyy_i:04d}"
 
 def correct_dob_line(line: str) -> str:
