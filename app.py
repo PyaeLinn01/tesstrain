@@ -235,12 +235,8 @@ def _to_myanmar_digits(digits: str) -> str:
     return "".join(MY_DIGITS_MAP.get(ch, ch) for ch in digits)
 
 def _format_candidate_to_prefix(cand: str) -> str:
-    """Convert nrc.json candidate like '၁၂/သလန(နိုင်)' to '၁၂-သလန(နိုင်)' prefix body."""
-    # Split at first '/'
-    parts = cand.split('/', 1)
-    if len(parts) == 2:
-        return f"{parts[0]}-{parts[1]}"
-    return cand.replace('/', '-')
+    """Keep prefix with slash: '၁၂/သလန(နိုင်)' remains unchanged."""
+    return cand
 
 def _ensure_six_myanmar_digits(digits: str) -> str:
     md = _to_myanmar_digits(digits)
@@ -249,20 +245,25 @@ def _ensure_six_myanmar_digits(digits: str) -> str:
     return ("၀" * (6 - len(md))) + md
 
 def correct_id_line(line: str, nrc_list: list[str], min_ratio: float = 0.6) -> str:
-    """Force NRC ID into exact format: 'အမှတ်_xx-yyy(z)aaaaaa'.
+    """Force NRC ID into exact format: 'အမှတ်_xx/yyy(z)aaaaaa'.
     - Always output leading 'အမှတ်_'
-    - Choose nearest prefix from nrc.json, rendered as 'xx-yyy(z)'
+    - Choose nearest prefix from nrc.json, rendered as 'xx/yyy(z)'
     - Serial 'aaaaaa' must be exactly 6 Myanmar digits (pad/truncate)
     - Skip lines starting with 'မွေး'
     """
     if line.strip().startswith("မွေး"):
         return line
-    prefix, serial = _split_serial(line.strip())
+    # Remove duplicated marker fragments and underscores
+    raw = re.sub(r"အမှတ်+", "အမှတ်", line)
+    raw = raw.replace("__", "_")
+    prefix, serial = _split_serial(raw.strip())
     # Ignore any existing marker; we will force 'အမှတ်_'
     _, _, body = _extract_marker_and_body(prefix)
     if not body:
         # If nothing to match, still enforce shape using best guess from full line
         body = prefix
+    # Sanitize body: keep Myanmar letters, '/', '()' only
+    body = re.sub(r"[^\u1000-\u109F/()]+", "", body)
     body_norm = _normalize_for_match(body)
     best = None
     best_score = 0.0
