@@ -59,7 +59,7 @@ st.markdown("""
 def setup_tesseract():
     """Setup Tesseract with the trained model"""
     # Check if the trained model exists
-    model_path = "/Users/pyaelinn/tessFinetune/tesstrain/data/id_bdV2.traineddata"
+    model_path = "/Users/pyaelinn/tessFinetune/tesstrain/data/id_bdV3.traineddata"
     if not os.path.exists(model_path):
         st.error(f"❌ Trained model not found at {model_path}")
         st.info("Please make sure you have completed the training process first.")
@@ -70,7 +70,7 @@ def setup_tesseract():
     os.environ['TESSDATA_PREFIX'] = data_dir
     
     # Configure pytesseract to use the trained model
-    custom_config = r'--oem 1 --psm 6 -l id_bdV2'
+    custom_config = r'--oem 1 --psm 6 -l id_bdV3'
     
     return custom_config
 
@@ -186,22 +186,44 @@ def _normalize_for_match(s: str) -> str:
     s = s.replace(" ", "").replace("_", "")
     return s
 
+MY_DIGITS_MAP = {
+    "0": "၀", "1": "၁", "2": "၂", "3": "၃", "4": "၄", "5": "၅", "6": "၆", "7": "၇", "8": "၈", "9": "၉",
+    "၀": "၀", "၁": "၁", "၂": "၂", "၃": "၃", "၄": "၄", "၅": "၅", "၆": "၆", "၇": "၇", "၈": "၈", "၉": "၉",
+}
+
+def _to_myanmar_digits(digits: str) -> str:
+    return "".join(MY_DIGITS_MAP.get(ch, ch) for ch in digits)
+
+def _format_candidate_to_prefix(cand: str) -> str:
+    """Keep prefix with slash: '၁၂/သလန(နိုင်)' remains unchanged."""
+    return cand
+
+def _ensure_six_myanmar_digits(digits: str) -> str:
+    md = _to_myanmar_digits(digits)
+    if len(md) >= 6:
+        return md[:6]
+    return ("၀" * (6 - len(md))) + md
+
 def correct_id_line(line: str, nrc_list: list[str], min_ratio: float = 0.6) -> str:
-    """If this line looks like an NRC id line, replace its prefix with the closest NRC pattern.
-    - Preserve trailing serial digits
-    - Keep 'အမှတ်' and its separator if present
-    - Skip lines that start with 'မွေး'
+    """Force NRC ID into exact format: 'အမှတ်_xx-yyy(z)aaaaaa'.
+    - Always output leading 'အမှတ်_'
+    - Choose nearest prefix from nrc.json, rendered as 'xx-yyy(z)'
+    - Serial must be exactly 6 Myanmar digits
+    - Skip lines starting with 'မွေး'
     """
     if line.strip().startswith("မွေး"):
         return line
 
-    prefix, serial = _split_serial(line.strip())
-    marker, sep, body = _extract_marker_and_body(prefix)
-
+    # Remove duplicated marker fragments and underscores
+    raw = re.sub(r"အမှတ်+", "အမှတ်", line)
+    raw = raw.replace("__", "_")
+    prefix, serial = _split_serial(raw.strip())
+    # Ignore any existing marker; force 'အမှတ်_'
+    _, _, body = _extract_marker_and_body(prefix)
     if not body:
-        # Nothing meaningful to match
-        return line
-
+        body = prefix
+    # Sanitize body: drop stray small tokens like 'အအ', 'အမ', keep Myanmar letters, '/', '()'
+    body = re.sub(r"[^\u1000-\u109F/()]+", "", body)
     body_norm = _normalize_for_match(body)
     best = None
     best_score = 0.0
@@ -211,20 +233,17 @@ def correct_id_line(line: str, nrc_list: list[str], min_ratio: float = 0.6) -> s
             best_score = score
             best = cand
 
-    if best and best_score >= min_ratio:
-        if marker:
-            fixed_prefix = f"{marker}{sep}{best}"
-        else:
-            fixed_prefix = best
-        return f"{fixed_prefix}{serial}"
-    return line
+    if not best or best_score < min_ratio:
+        return line
+
+    fixed_body = _format_candidate_to_prefix(best)
+    serial6 = _ensure_six_myanmar_digits(serial)
+    return f"အမှတ်_{fixed_body}{serial6}"
 
 def postprocess_text(text: str, nrc_list: list[str]) -> str:
-    lines = text.splitlines()
-    out_lines = []
-    for ln in lines:
-        out_lines.append(correct_id_line(ln, nrc_list))
-    return "\n".join(out_lines)
+    """Produce a single-line corrected NRC in format 'အမှတ်_xx/yyy(z)aaaaaa'."""
+    blob = " ".join(text.split())  # collapse whitespace/newlines
+    return correct_id_line(blob, nrc_list)
 
 def draw_boxes(image, boxes):
     """Draw bounding boxes on the image"""
