@@ -9,6 +9,9 @@ import shutil
 from pathlib import Path
 from ultralytics import YOLO
 import cvzone
+import json
+import re
+from difflib import SequenceMatcher
 
 # Configure page
 st.set_page_config(
@@ -62,8 +65,8 @@ def setup_tesseract():
     pytesseract config strings, or False if any model is missing.
     """
     # Absolute paths for presence checks
-    iddob_model_path = "/Users/pyaelinn/tessFinetune/tesstrain/data/id_bdV2.traineddata"
-    name_model_path = "/Users/pyaelinn/tessFinetune/tesstrain/data/nameV2.traineddata"
+    iddob_model_path = "/Users/pyaelinn/tessFinetune/tesstrain/data/id_bdV3.traineddata"
+    name_model_path = "/Users/pyaelinn/tessFinetune/tesstrain/data/nameV3.traineddata"
 
     missing = []
     if not os.path.exists(iddob_model_path):
@@ -83,8 +86,8 @@ def setup_tesseract():
 
     # Configure pytesseract to use the trained models
     configs = {
-        'iddob': r'--oem 1 --psm 6 -l id_bdV2',
-        'name': r'--oem 1 --psm 6 -l nameV2',
+        'iddob': r'--oem 1 --psm 6 -l id_bdV3',
+        'name': r'--oem 1 --psm 6 -l nameV3',
     }
 
     return configs
@@ -178,6 +181,108 @@ def perform_ocr(image, config):
         st.error(f"OCR Error: {str(e)}")
         return "", "", ""
 
+# ========================= NRC ID Postprocessing =========================
+def _load_nrc_my_list(nrc_path: Path) -> list[str]:
+    """Load all Myanmar NRC prefix strings from nrc.json into a flat list.
+
+    Each entry looks like: "၁၂/သလန(နိုင်)".
+    """
+    try:
+        with open(nrc_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        result = []
+        for _, arr in data.items():
+            for item in arr:
+                my = item.get("my")
+                if my:
+                    result.append(my)
+        return result
+    except Exception as e:
+        st.warning(f"Failed to load NRC list: {e}")
+        return []
+
+def _similarity(a: str, b: str) -> float:
+    return SequenceMatcher(None, a, b).ratio()
+
+def _split_serial(line: str) -> tuple[str, str]:
+    """Split line into prefix and trailing serial digits (ASCII or Myanmar)."""
+    m = re.search(r"([0-9\u1040-\u1049]+)$", line)
+    if m:
+        start = m.start(1)
+        return line[:start], line[start:]
+    return line, ""
+
+def _extract_marker_and_body(prefix: str) -> tuple[str, str, str]:
+    """Extract leading 'အမှတ်' and separator. Returns (marker, sep, body)."""
+    m = re.match(r"^(အမှတ်)([_\s\-]?)", prefix)
+    if m:
+        marker = m.group(1)
+        sep = m.group(2) or "_"
+        body = prefix[m.end():]
+        return marker, sep, body
+    return "", "", prefix
+
+def _normalize_for_match(s: str) -> str:
+    """Normalize for fuzzy matching by removing spaces/underscores."""
+    return s.replace(" ", "").replace("_", "")
+
+MY_DIGITS_MAP = {
+    "0": "၀", "1": "၁", "2": "၂", "3": "၃", "4": "၄", "5": "၅", "6": "၆", "7": "၇", "8": "၈", "9": "၉",
+    "၀": "၀", "၁": "၁", "၂": "၂", "၃": "၃", "၄": "၄", "၅": "၅", "၆": "၆", "၇": "၇", "၈": "၈", "၉": "၉",
+}
+
+def _to_myanmar_digits(digits: str) -> str:
+    return "".join(MY_DIGITS_MAP.get(ch, ch) for ch in digits)
+
+def _format_candidate_to_prefix(cand: str) -> str:
+    """Convert nrc.json candidate like '၁၂/သလန(နိုင်)' to '၁၂-သလန(နိုင်)' prefix body."""
+    # Split at first '/'
+    parts = cand.split('/', 1)
+    if len(parts) == 2:
+        return f"{parts[0]}-{parts[1]}"
+    return cand.replace('/', '-')
+
+def _ensure_six_myanmar_digits(digits: str) -> str:
+    md = _to_myanmar_digits(digits)
+    if len(md) >= 6:
+        return md[:6]
+    return ("၀" * (6 - len(md))) + md
+
+def correct_id_line(line: str, nrc_list: list[str], min_ratio: float = 0.6) -> str:
+    """Force NRC ID into exact format: 'အမှတ်_xx-yyy(z)aaaaaa'.
+    - Always output leading 'အမှတ်_'
+    - Choose nearest prefix from nrc.json, rendered as 'xx-yyy(z)'
+    - Serial 'aaaaaa' must be exactly 6 Myanmar digits (pad/truncate)
+    - Skip lines starting with 'မွေး'
+    """
+    if line.strip().startswith("မွေး"):
+        return line
+    prefix, serial = _split_serial(line.strip())
+    # Ignore any existing marker; we will force 'အမှတ်_'
+    _, _, body = _extract_marker_and_body(prefix)
+    if not body:
+        # If nothing to match, still enforce shape using best guess from full line
+        body = prefix
+    body_norm = _normalize_for_match(body)
+    best = None
+    best_score = 0.0
+    for cand in nrc_list:
+        score = _similarity(body_norm, _normalize_for_match(cand))
+        if score > best_score:
+            best_score = score
+            best = cand
+    if not best or best_score < min_ratio:
+        # If nothing good, return original
+        return line
+    fixed_body = _format_candidate_to_prefix(best)
+    serial6 = _ensure_six_myanmar_digits(serial)
+    return f"အမှတ်_{fixed_body}{serial6}"
+
+def postprocess_text(text: str, nrc_list: list[str]) -> str:
+    lines = text.splitlines()
+    return "\n".join(correct_id_line(ln, nrc_list) for ln in lines)
+# ========================================================================
+
 def draw_boxes(image, boxes):
     """Draw bounding boxes on the image"""
     if len(image.shape) == 2:
@@ -253,6 +358,10 @@ def main():
     if not configs:
         return
     
+    # Load NRC list for ID postprocessing
+    nrc_path = Path("/Users/pyaelinn/tessFinetune/tesstrain/nrc.json")
+    nrc_list = _load_nrc_my_list(nrc_path)
+
     # File upload
     st.markdown('<h2 class="sub-header">📤 Upload Image</h2>', unsafe_allow_html=True)
     uploaded_file = st.file_uploader(
@@ -282,6 +391,10 @@ def main():
                     st.markdown(f"**Class:** {det['class']} | **Confidence:** {det['confidence']*100:.1f}%")
                     st.image(det['roi_gray'], caption=f"Detected: {det['class']} (grayscale)", use_column_width=True, channels="GRAY")
                     st.text_area("OCR Result", det['text'], height=100, key=f"ocr_{det['box'][0]}_{det['box'][1]}")
+                    # Only preprocess ID text; skip DOB and others
+                    if det['class'] == 'id' and nrc_list:
+                        corrected = correct_id_line(det['text'], nrc_list)
+                        st.text_area("Corrected Result (ID postprocessed)", corrected, height=100, key=f"ocr_corr_{det['box'][0]}_{det['box'][1]}")
         else:
             st.warning("YOLOv5 model (v5.pt) not found. Please add the model to enable NRC field detection.")
 
