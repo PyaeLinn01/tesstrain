@@ -245,6 +245,58 @@ def postprocess_text(text: str, nrc_list: list[str]) -> str:
     blob = " ".join(text.split())  # collapse whitespace/newlines
     return correct_id_line(blob, nrc_list)
 
+# ========================= DOB Postprocessing ============================
+ASCII_FROM_MY = {
+    "၀": "0", "၁": "1", "၂": "2", "၃": "3", "၄": "4",
+    "၅": "5", "၆": "6", "၇": "7", "၈": "8", "၉": "9",
+}
+
+def _my_to_ascii_digits(s: str) -> str:
+    return "".join(ASCII_FROM_MY.get(ch, ch) for ch in s)
+
+def _clamp_int(val: int, lo: int, hi: int) -> int:
+    return max(lo, min(hi, val))
+
+def _extract_digits_groups(s: str) -> list[str]:
+    cleaned = re.sub(r"[^0-9\u1040-\u1049\.\-_/]", " ", s)
+    return re.findall(r"[0-9\u1040-\u1049]{1,4}", cleaned)
+
+def _dob_from_groups(groups: list[str]) -> tuple[str, str, str] | None:
+    g_ascii = [_my_to_ascii_digits(g) for g in groups]
+    year_idx = None
+    for i, g in enumerate(g_ascii):
+        if len(g) == 4 and g.isdigit() and 1900 <= int(g) <= 2099:
+            year_idx = i
+    dd = mm = yyyy = None
+    if year_idx is not None:
+        yyyy = g_ascii[year_idx]
+        prev = [g for g in g_ascii[:year_idx] if g.isdigit()]
+        if len(prev) >= 2:
+            dd, mm = prev[0], prev[1]
+    if not (dd and mm and yyyy):
+        all_digits = "".join(g_ascii)
+        all_digits = re.sub(r"[^0-9]", "", all_digits)
+        if len(all_digits) < 8:
+            return None
+        dd, mm, yyyy = all_digits[:2], all_digits[2:4], all_digits[4:8]
+    dd_i = _clamp_int(int(dd[:2] or 0), 1, 31)
+    mm_i = _clamp_int(int(mm[:2] or 0), 1, 12)
+    yyyy_i = int(yyyy[:4]) if len(yyyy) >= 4 else 2000
+    return f"{dd_i:02d}", f"{mm_i:02d}", f"{yyyy_i:04d}"
+
+def correct_dob_line(line: str) -> str:
+    """Force DOB into 'မွေးသက္ကရာဇ်_dd.mm.yyyy'. If text is ID (starts with 'အမှတ်'), leave as-is."""
+    s = line.strip()
+    if s.startswith("အမှတ်"):
+        return line
+    groups = _extract_digits_groups(s)
+    parsed = _dob_from_groups(groups)
+    if not parsed:
+        return line
+    dd, mm, yyyy = parsed
+    return f"မွေးသက္ကရာဇ်_{_to_myanmar_digits(dd)}.{_to_myanmar_digits(mm)}.{_to_myanmar_digits(yyyy)}"
+# ========================================================================
+
 def draw_boxes(image, boxes):
     """Draw bounding boxes on the image"""
     if len(image.shape) == 2:
@@ -337,6 +389,10 @@ def main():
                 st.text_area("OCR Result", text, height=200, key="ocr_result")
                 st.markdown("**Corrected Text (ID postprocessed):**")
                 st.text_area("Corrected Result", corrected, height=200, key="ocr_corrected")
+                # DOB corrected (if applicable)
+                dob_corrected = correct_dob_line(text)
+                st.markdown("**Corrected DOB (if detected):**")
+                st.text_area("DOB Result", dob_corrected, height=100, key="ocr_dob_corrected")
                 st.markdown('</div>', unsafe_allow_html=True)
             
             with col2:
