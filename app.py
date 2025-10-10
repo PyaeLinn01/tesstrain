@@ -284,6 +284,73 @@ def postprocess_text(text: str, nrc_list: list[str]) -> str:
     return "\n".join(correct_id_line(ln, nrc_list) for ln in lines)
 # ========================================================================
 
+# ========================= DOB Postprocessing ============================
+ASCII_FROM_MY = {
+    "၀": "0", "၁": "1", "၂": "2", "၃": "3", "၄": "4",
+    "၅": "5", "၆": "6", "၇": "7", "၈": "8", "၉": "9",
+}
+
+def _my_to_ascii_digits(s: str) -> str:
+    return "".join(ASCII_FROM_MY.get(ch, ch) for ch in s)
+
+def _clamp_int(val: int, lo: int, hi: int) -> int:
+    return max(lo, min(hi, val))
+
+def _extract_digits_groups(s: str) -> list[str]:
+    # Keep only digits and basic separators to help grouping
+    cleaned = re.sub(r"[^0-9\u1040-\u1049\.\-_/]", " ", s)
+    groups = re.findall(r"[0-9\u1040-\u1049]{1,4}", cleaned)
+    return groups
+
+def _dob_from_groups(groups: list[str]) -> tuple[str, str, str] | None:
+    # Convert groups to ASCII
+    g_ascii = [_my_to_ascii_digits(g) for g in groups]
+    # Prefer pattern dd mm yyyy with a 4-digit year present
+    year_idx = None
+    for i, g in enumerate(g_ascii):
+        if len(g) == 4 and g.isdigit() and 1900 <= int(g) <= 2099:
+            year_idx = i
+    dd = mm = yyyy = None
+    if year_idx is not None:
+        yyyy = g_ascii[year_idx]
+        # take first two preceding groups as dd, mm if available
+        prev = [g for g in g_ascii[:year_idx] if g.isdigit()]
+        if len(prev) >= 2:
+            dd, mm = prev[0], prev[1]
+    if not (dd and mm and yyyy):
+        # fallback: take first 8+ digits from concatenation
+        all_digits = "".join(g_ascii)
+        all_digits = re.sub(r"[^0-9]", "", all_digits)
+        if len(all_digits) < 8:
+            return None
+        dd, mm, yyyy = all_digits[:2], all_digits[2:4], all_digits[4:8]
+    # Clamp and pad
+    dd_i = _clamp_int(int(dd[:2] or 0), 1, 31)
+    mm_i = _clamp_int(int(mm[:2] or 0), 1, 12)
+    yyyy_i = int(yyyy[:4]) if len(yyyy) >= 4 else 2000
+    return f"{dd_i:02d}", f"{mm_i:02d}", f"{yyyy_i:04d}"
+
+def correct_dob_line(line: str) -> str:
+    """Force DOB into 'မွေးသက္ကရာဇ်_dd.mm.yyyy' using OCR output from iddob model.
+    Only applies if the text refers to DOB; if it's clearly an ID (starts with 'အမှတ်'), return as-is.
+    """
+    s = line.strip()
+    if s.startswith("အမှတ်"):
+        return line
+    # Normalize common Burmese DOB markers to ensure presence
+    # If missing, we will still output with the marker.
+    groups = _extract_digits_groups(s)
+    parsed = _dob_from_groups(groups)
+    if not parsed:
+        return line
+    dd, mm, yyyy = parsed
+    dd_my = _to_myanmar_digits(dd)
+    mm_my = _to_myanmar_digits(mm)
+    yyyy_my = _to_myanmar_digits(yyyy)
+    return f"မွေးသက္ကရာဇ်_{dd_my}.{mm_my}.{yyyy_my}"
+
+# ========================================================================
+
 def draw_boxes(image, boxes):
     """Draw bounding boxes on the image"""
     if len(image.shape) == 2:
@@ -396,6 +463,9 @@ def main():
                     if det['class'] == 'id' and nrc_list:
                         corrected = correct_id_line(det['text'], nrc_list)
                         st.text_area("Corrected Result (ID postprocessed)", corrected, height=100, key=f"ocr_corr_{det['box'][0]}_{det['box'][1]}")
+                    if det['class'] == 'dob':
+                        dob_fixed = correct_dob_line(det['text'])
+                        st.text_area("Corrected Result (DOB postprocessed)", dob_fixed, height=100, key=f"ocr_corr_dob_{det['box'][0]}_{det['box'][1]}")
         else:
             st.warning("YOLOv5 model (v5.pt) not found. Please add the model to enable NRC field detection.")
 
