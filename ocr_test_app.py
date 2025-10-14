@@ -59,7 +59,7 @@ st.markdown("""
 def setup_tesseract():
     """Setup Tesseract with the trained model"""
     # Check if the trained model exists
-    model_path = "/Users/pyaelinn/tessFinetune/tesstrain/data/id_bdV3.traineddata"
+    model_path = "/Users/pyaelinn/tessFinetune/tesstrain/data/nameV3.traineddata"
     if not os.path.exists(model_path):
         st.error(f"❌ Trained model not found at {model_path}")
         st.info("Please make sure you have completed the training process first.")
@@ -70,7 +70,7 @@ def setup_tesseract():
     os.environ['TESSDATA_PREFIX'] = data_dir
     
     # Configure pytesseract to use the trained model
-    custom_config = r'--oem 1 --psm 6 -l id_bdV3'
+    custom_config = r'--oem 1 --psm 6 -l nameV3'
     
     return custom_config
 
@@ -186,6 +186,16 @@ def _normalize_for_match(s: str) -> str:
     s = s.replace(" ", "").replace("_", "")
     return s
 
+def _normalize_prefix_for_compare(s: str) -> str:
+    """Normalize a candidate prefix for strict equality check.
+    - Map '-' to '/' so '၉-မရတ(နိုင်)' equals '၉/မရတ(နိုင်)'
+    - Keep only Myanmar letters, '/', '()'
+    - Remove spaces/underscores
+    """
+    s = s.replace("-", "/")
+    s = re.sub(r"[^\u1000-\u109F/()]+", "", s)
+    return s.replace(" ", "").replace("_", "")
+
 MY_DIGITS_MAP = {
     "0": "၀", "1": "၁", "2": "၂", "3": "၃", "4": "၄", "5": "၅", "6": "၆", "7": "၇", "8": "၈", "9": "၉",
     "၀": "၀", "၁": "၁", "၂": "၂", "၃": "၃", "၄": "၄", "၅": "၅", "၆": "၆", "၇": "၇", "၈": "၈", "၉": "၉",
@@ -222,8 +232,15 @@ def correct_id_line(line: str, nrc_list: list[str], min_ratio: float = 0.6) -> s
     _, _, body = _extract_marker_and_body(prefix)
     if not body:
         body = prefix
-    # Sanitize body: drop stray small tokens like 'အအ', 'အမ', keep Myanmar letters, '/', '()'
-    body = re.sub(r"[^\u1000-\u109F/()]+", "", body)
+    # Sanitize body: keep Myanmar letters, '/', '()' and allow '-' for equality check
+    body = re.sub(r"[^\u1000-\u109F/()\-]+", "", body)
+    # Early accept: if OCR body exactly matches an NRC prefix (allow '-' vs '/') and serial is 6 digits, do not change
+    body_cmp = _normalize_prefix_for_compare(body)
+    nrc_cmp_set = {_normalize_prefix_for_compare(c) for c in nrc_list}
+    serial_digits = re.sub(r"[^0-9\u1040-\u1049]", "", serial)
+    if body_cmp in nrc_cmp_set and len(_to_myanmar_digits(serial_digits)) == 6:
+        return line.strip()
+    # Otherwise proceed with fuzzy matching
     body_norm = _normalize_for_match(body)
     best = None
     best_score = 0.0
