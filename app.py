@@ -333,6 +333,14 @@ def _dob_from_groups(groups: list[str]) -> tuple[str, str, str] | None:
             mm_val = 99
         if mm_val > 12:
             mm = mm[0]
+    # Fix impossible day like '86' by dropping the second digit -> '8' before clamping
+    if len(dd) >= 2:
+        try:
+            dd_val = int(dd[:2])
+        except ValueError:
+            dd_val = 99
+        if dd_val > 31:
+            dd = dd[0]
     # Clamp day and month
     dd_i = _clamp_int(int(dd[:2] or 0), 1, 31)
     mm_i = _clamp_int(int(mm[:2] or 0), 1, 12)

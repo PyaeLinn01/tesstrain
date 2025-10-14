@@ -288,6 +288,14 @@ def _dob_from_groups(groups: list[str]) -> tuple[str, str, str] | None:
             mm_val = 99
         if mm_val > 12:
             mm = mm[0]
+    # Fix impossible day like '86' by dropping the second digit -> '8' before clamping
+    if len(dd) >= 2:
+        try:
+            dd_val = int(dd[:2])
+        except ValueError:
+            dd_val = 99
+        if dd_val > 31:
+            dd = dd[0]
     dd_i = _clamp_int(int(dd[:2] or 0), 1, 31)
     mm_i = _clamp_int(int(mm[:2] or 0), 1, 12)
     # Ensure year starts with 1 or 2; otherwise default to 2000
@@ -361,21 +369,35 @@ def main():
         help="Minimum confidence for text detection"
     )
     
+    # Set up upload change tracking
+    if "upload_counter" not in st.session_state:
+        st.session_state.upload_counter = 0
+
+    def _on_upload_change():
+        st.session_state.upload_counter += 1
+
+    run_id = st.session_state.upload_counter
+
     # File upload
     st.markdown('<h2 class="sub-header">📤 Upload Image</h2>', unsafe_allow_html=True)
     
     uploaded_file = st.file_uploader(
         "Choose an image file",
         type=['png', 'jpg', 'jpeg', 'tiff', 'bmp'],
-        help="Upload an image containing Myanmar text to test OCR"
+        help="Upload an image containing Myanmar text to test OCR",
+        key="uploader_file",
+        on_change=_on_upload_change
     )
     
     if uploaded_file is not None:
         # Display original image
         st.markdown('<h3 class="sub-header">📷 Original Image</h3>', unsafe_allow_html=True)
         
-        # Load image
-        image = Image.open(uploaded_file)
+        # Load image from fresh bytes to avoid any internal pointer issues
+        uploaded_file.seek(0)
+        img_bytes = uploaded_file.read()
+        from io import BytesIO
+        image = Image.open(BytesIO(img_bytes))
         st.image(image, caption="Original Image", use_column_width=True)
         
         # Preprocess image (background removal)
@@ -399,13 +421,13 @@ def main():
             with col1:
                 st.markdown('<div class="result-box">', unsafe_allow_html=True)
                 st.markdown("**Extracted Text:**")
-                st.text_area("OCR Result", text, height=200, key="ocr_result")
+                st.text_area("OCR Result", text, height=200, key=f"ocr_result_{run_id}")
                 st.markdown("**Corrected Text (ID postprocessed):**")
-                st.text_area("Corrected Result", corrected, height=200, key="ocr_corrected")
+                st.text_area("Corrected Result", corrected, height=200, key=f"ocr_corrected_{run_id}")
                 # DOB corrected (if applicable)
                 dob_corrected = correct_dob_line(text)
                 st.markdown("**Corrected DOB (if detected):**")
-                st.text_area("DOB Result", dob_corrected, height=100, key="ocr_dob_corrected")
+                st.text_area("DOB Result", dob_corrected, height=100, key=f"ocr_dob_corrected_{run_id}")
                 st.markdown('</div>', unsafe_allow_html=True)
             
             with col2:
