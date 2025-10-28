@@ -7,7 +7,7 @@
 .env.local
 .env.*.local
 
-data/
+
 name_corpus/
 cropped_output14_10_25/
 grayscale_output/
