@@ -64,15 +64,17 @@ def setup_tesseract():
     Returns a dict with keys 'iddob' and 'name' containing their respective
     pytesseract config strings, or False if any model is missing.
     """
-    # Absolute paths for presence checks
-    iddob_model_path = "/Users/pyaelinn/tessFinetune/tesstrain/data/id_bdV3.traineddata"
-    name_model_path = "/Users/pyaelinn/tessFinetune/tesstrain/data/nameV3.traineddata"
+    # Resolve repo-relative data directory and model paths
+    app_dir = Path(__file__).resolve().parent
+    data_dir_path = app_dir / "data"
+    iddob_model_path = data_dir_path / "id_bdV6.traineddata"
+    name_model_path = data_dir_path / "nameV6.traineddata"
 
     missing = []
-    if not os.path.exists(iddob_model_path):
-        missing.append(iddob_model_path)
-    if not os.path.exists(name_model_path):
-        missing.append(name_model_path)
+    if not iddob_model_path.exists():
+        missing.append(str(iddob_model_path))
+    if not name_model_path.exists():
+        missing.append(str(name_model_path))
     if missing:
         st.error("❌ Trained model(s) not found:")
         for p in missing:
@@ -81,13 +83,12 @@ def setup_tesseract():
         return False
 
     # Set the TESSDATA_PREFIX environment variable to the data directory
-    data_dir = os.path.join(os.getcwd(), "data")
-    os.environ['TESSDATA_PREFIX'] = data_dir
+    os.environ['TESSDATA_PREFIX'] = str(data_dir_path)
 
     # Configure pytesseract to use the trained models
     configs = {
-        'iddob': r'--oem 1 --psm 6 -l id_bdV3',
-        'name': r'--oem 1 --psm 6 -l nameV3',
+        'iddob': r'--oem 1 --psm 6 -l id_bdV6',
+        'name': r'--oem 1 --psm 6 -l nameV6',
     }
 
     return configs
@@ -465,7 +466,7 @@ def main():
         return
     
     # Load NRC list for ID postprocessing
-    nrc_path = Path("/Users/pyaelinn/tessFinetune/tesstrain/nrc.json")
+    nrc_path = Path(__file__).resolve().parent / "nrc.json"
     nrc_list = _load_nrc_my_list(nrc_path)
 
     # File upload
