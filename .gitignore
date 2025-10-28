@@ -1,4 +1,4 @@
-/data/
+
 *.built
 *.BAK
 *~
@@ -6,7 +6,6 @@
 .env
 .env.local
 .env.*.local
-
 
 name_corpus/
 cropped_output14_10_25/
