@@ -67,12 +67,15 @@ def setup_tesseract():
     # Resolve repo-relative data directory and model paths
     app_dir = Path(__file__).resolve().parent
     data_dir_path = app_dir / "data"
-    iddob_model_path = data_dir_path / "id_bdV6.traineddata"
+    dob_model_path = data_dir_path / "bdV2.traineddata"
     name_model_path = data_dir_path / "nameV6.traineddata"
+    id_model_path = data_dir_path / "idV1.traineddata"
 
     missing = []
-    if not iddob_model_path.exists():
-        missing.append(str(iddob_model_path))
+    if not dob_model_path.exists():
+        missing.append(str(dob_model_path))
+    if not id_model_path.exists():
+        missing.append(str(id_model_path))    
     if not name_model_path.exists():
         missing.append(str(name_model_path))
     if missing:
@@ -87,8 +90,9 @@ def setup_tesseract():
 
     # Configure pytesseract to use the trained models
     configs = {
-        'iddob': r'--oem 1 --psm 6 -l id_bdV6',
+        'dob': r'--oem 1 --psm 6 -l bdV2',
         'name': r'--oem 1 --psm 6 -l nameV6',
+        'id': r'--oem 1 --psm 6 -l idV1'
     }
 
     return configs
@@ -436,13 +440,15 @@ def detect_boxes_and_ocr(image_cv, preprocess_image, configs):
             # Remove background and convert ROI to clean grayscale
             roi_gray = remove_background_canvas_style(roi)
             # Choose OCR model per class
-            if class_name in ("id", "dob"):
-                ocr_config = configs.get('iddob')
-            elif class_name in ("name", "father"):
+            if class_name == 'dob':
+                ocr_config = configs.get('dob')
+            elif class_name == 'id':
+                ocr_config = configs.get('id')
+            elif class_name in ('name', 'father'):
                 ocr_config = configs.get('name')
             else:
-                # default to id/dob model if class unknown
-                ocr_config = configs.get('iddob')
+                # Fallback to 'id' config if unknown class
+                ocr_config = configs.get('id')
 
             # OCR on cleaned grayscale crop
             text, _, _ = perform_ocr(roi_gray, ocr_config)
