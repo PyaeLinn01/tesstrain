@@ -7,8 +7,7 @@
 .env.local
 .env.*.local
 
-name_corpus/
 cropped_output14_10_25/
 grayscale_output/
 nrc141025/
-name.txt
+
