@@ -4,8 +4,8 @@ import os
 from pathlib import Path
 
 # Hardcoded paths (edit these if you want different folders)
-INPUT_DIR = "/Users/pyaelinn/tessFinetune/tesstrain/data/langdata/alg-ground-truth/PL_processed_images"
-OUTPUT_DIR = "/Users/pyaelinn/tessFinetune/tesstrain/data/langdata/alg-ground-truth/bgremove"
+INPUT_DIR = "/Users/pyaelinn/tessFinetune/tesstrain/grayscale_output"
+OUTPUT_DIR = "bgremove"
 SUPPORTED_EXTS = [".jpg", ".jpeg", ".png", ".bmp", ".tiff"]
 
 
