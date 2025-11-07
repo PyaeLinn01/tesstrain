@@ -67,7 +67,7 @@ def setup_tesseract():
     # Resolve repo-relative data directory and model paths
     app_dir = Path(__file__).resolve().parent
     data_dir_path = app_dir / "data"
-    dob_model_path = data_dir_path / "bdV2.traineddata"
+    dob_model_path = data_dir_path / "bdV3.traineddata"
     name_model_path = data_dir_path / "nameV6.traineddata"
     id_model_path = data_dir_path / "idV1.traineddata"
 
@@ -90,7 +90,7 @@ def setup_tesseract():
 
     # Configure pytesseract to use the trained models
     configs = {
-        'dob': r'--oem 1 --psm 6 -l bdV2',
+        'dob': r'--oem 1 --psm 6 -l bdV3',
         'name': r'--oem 1 --psm 6 -l nameV6',
         'id': r'--oem 1 --psm 6 -l idV1'
     }
@@ -423,7 +423,7 @@ class_labels = {
 }
 
 def detect_boxes_and_ocr(image_cv, preprocess_image, configs):
-    model_path = "v5.pt"
+    model_path = "nrcv7.pt"
     if not os.path.exists(model_path):
         return []
     yolo_model = YOLO(model_path)

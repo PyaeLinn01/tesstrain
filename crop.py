@@ -9,7 +9,7 @@ from pathlib import Path
 class_labels = {0: "dob", 1: "father", 2: "id", 3: "name"}
 
 # Configuration - Change this to your input folder path
-INPUT_FOLDER = "/Users/pyaelinn/tessFinetune/tesstrain/nrc141025"  # Change this to your folder path
+INPUT_FOLDER = "/Users/pyaelinn/tessFinetune/tesstrain/nrc-photo"  # Change this to your folder path
 OUTPUT_FOLDER = "cropped_output14_10_25"  # Output folder will be created automatically
 MODEL_PATH = "/Users/pyaelinn/tessFinetune/tesstrain/v5.pt"
 
