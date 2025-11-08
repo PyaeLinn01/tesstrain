@@ -423,7 +423,7 @@ class_labels = {
 }
 
 def detect_boxes_and_ocr(image_cv, preprocess_image, configs):
-    model_path = "nrcv7.pt"
+    model_path = "v5.pt"
     if not os.path.exists(model_path):
         return []
     yolo_model = YOLO(model_path)
