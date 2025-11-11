@@ -61,7 +61,7 @@ def setup_tesseract():
     # Check if the trained model exists
     app_dir = Path(__file__).resolve().parent
     data_dir_path = app_dir / "data"
-    model_path = data_dir_path / "nameV6.traineddata"
+    model_path = data_dir_path / "nameV8.traineddata"
     if not model_path.exists():
         st.error(f"❌ Trained model not found at {model_path}")
         st.info("Please make sure you have completed the training process first.")
@@ -71,7 +71,7 @@ def setup_tesseract():
     os.environ['TESSDATA_PREFIX'] = str(data_dir_path)
     
     # Configure pytesseract to use the trained model
-    custom_config = r'--oem 1 --psm 6 -l nameV6'
+    custom_config = r'--oem 1 --psm 6 -l nameV8'
     
     return custom_config
 
