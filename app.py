@@ -68,8 +68,8 @@ def setup_tesseract():
     app_dir = Path(__file__).resolve().parent
     data_dir_path = app_dir / "data"
     dob_model_path = data_dir_path / "bdV3.traineddata"
-    name_model_path = data_dir_path / "nameV6.traineddata"
-    id_model_path = data_dir_path / "idV1.traineddata"
+    name_model_path = data_dir_path / "nameV8.traineddata"
+    id_model_path = data_dir_path / "idV2.traineddata"
 
     missing = []
     if not dob_model_path.exists():
@@ -91,8 +91,8 @@ def setup_tesseract():
     # Configure pytesseract to use the trained models
     configs = {
         'dob': r'--oem 1 --psm 6 -l bdV3',
-        'name': r'--oem 1 --psm 6 -l nameV6',
-        'id': r'--oem 1 --psm 6 -l idV1'
+        'name': r'--oem 1 --psm 6 -l nameV8',
+        'id': r'--oem 1 --psm 6 -l idV2'
     }
 
     return configs
