@@ -67,9 +67,9 @@ def setup_tesseract():
     # Resolve repo-relative data directory and model paths
     app_dir = Path(__file__).resolve().parent
     data_dir_path = app_dir / "data"
-    dob_model_path = data_dir_path / "bdV3.traineddata"
-    name_model_path = data_dir_path / "nameV8.traineddata"
-    id_model_path = data_dir_path / "idV2.traineddata"
+    dob_model_path = data_dir_path / "bdV5.traineddata"
+    name_model_path = data_dir_path / "nameV10.traineddata"
+    id_model_path = data_dir_path / "idV3.traineddata"
 
     missing = []
     if not dob_model_path.exists():
@@ -90,9 +90,9 @@ def setup_tesseract():
 
     # Configure pytesseract to use the trained models
     configs = {
-        'dob': r'--oem 1 --psm 6 -l bdV3',
-        'name': r'--oem 1 --psm 6 -l nameV8',
-        'id': r'--oem 1 --psm 6 -l idV2'
+        'dob': r'--oem 1 --psm 6 -l bdV5',
+        'name': r'--oem 1 --psm 6 -l nameV10',
+        'id': r'--oem 1 --psm 6 -l idV3'
     }
 
     return configs
